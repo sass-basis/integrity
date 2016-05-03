@@ -77,7 +77,8 @@ gulp.task('deploy_gh_pages', ['build'], function() {
 	return gulp.src(
 				[
 					'./assets/**',
-					'./index.html'
+					'./index.html',
+					'./*.md'
 				],
 				{base: './'}
 			)
