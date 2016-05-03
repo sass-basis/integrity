@@ -23,7 +23,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "sass-basis": "^4.2.3"
+    "sass-basis": "^4.2.4"
   },
   "scripts": {
     "deploy_gh_pages": "gulp deploy_gh_pages"
