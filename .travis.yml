@@ -18,6 +18,8 @@ before_script:
 script:
   - cd gh-pages
   - ls | xargs rm -rf
+  - rm -f .gitignore
+  - rm -f .travis.yml
   - cd ../
   - npm run deploy_gh_pages
 after_success:
