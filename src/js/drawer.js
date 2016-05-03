@@ -5,10 +5,16 @@ export default class BasisDrawer {
 		if (!container) {
 			container = '._c-drawer';
 		}
-		this.params = Object.assign({
-			'drawer': '._c-drawer__body',
-			'btn'   : '._c-drawer__btn'
-		}, params);
+		if (!params) {
+			params = {};
+		}
+		this.params = params;
+		if (!this.params.drawer) {
+			this.params.drawer = '._c-drawer__body';
+		}
+		if (!this.params.btn) {
+			this.params.btn = '._c-drawer__btn';
+		}
 
 		this.container = document.querySelectorAll(container);
 		this.setListener();

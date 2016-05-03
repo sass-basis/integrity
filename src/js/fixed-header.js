@@ -5,10 +5,16 @@ export default class BasisFixedHeader {
 		if (!container) {
 			container = '._l-container';
 		}
-		this.params = Object.assign({
-			'header'   : '._l-header',
-			'className': '_l-header--is-scrolled'
-		}, params);
+		if (!params) {
+			params = {};
+		}
+		this.params = params;
+		if (!this.params.header) {
+			this.params.header = '._l-header';
+		}
+		if (!this.params.class) {
+			this.params.class = '_l-header--is-scrolled';
+		}
 
 		this.container = document.querySelector(container);
 		this.header    = document.querySelector(this.params.header);
@@ -19,9 +25,9 @@ export default class BasisFixedHeader {
 		this.container.addEventListener('scroll', (event) => {
 			const scroll = container.scrollTop;
 			if (scroll > 0) {
-				this.header.classList.add(this.params.className);
+				this.header.classList.add(this.params.class);
 			} else {
-				this.header.classList.remove(this.params.className);
+				this.header.classList.remove(this.params.class);
 			}
 		}, false);
 	}
