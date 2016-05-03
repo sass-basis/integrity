@@ -1,0 +1,15 @@
+.c-btn {
+	@extend ._c-btn;
+	transition: background-color $bs-transition-duration $bs-transition-function-timing;
+	border: 2px solid $accent-color;
+	color: $accent-color;
+	font-weight: bold;
+
+	@include bs-hover() {
+		background-color: $main-color;
+	}
+
+	&--block {
+		@extend ._c-btn--block;
+	}
+}

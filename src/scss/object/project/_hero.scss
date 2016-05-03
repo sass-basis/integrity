@@ -1,0 +1,27 @@
+.p-hero {
+	background-image: url('../images/photo-1449089299624-89ce41e8306c.jpeg');
+	background-size: cover;
+
+	&, a {
+		color: #fff;
+	}
+
+	&:before {
+		background-color: rgba(#000, .3);
+	}
+
+	._c-hero__header {
+		padding: ($bs-base-line-height / 2) 0;
+	}
+
+	._c-hero__content {
+		text-align: center;
+	}
+
+	&__title {
+		display: inline-block;
+		margin: 0 0 $bs-font-size;
+		padding: 0 0 $bs-font-size;
+		border-bottom: 1px solid #fff;
+	}
+}

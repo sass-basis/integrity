@@ -1,0 +1,37 @@
+.#{$bs-prefix}l-header {
+	padding: ($bs-base-line-height / 2) 0;
+	transition: background-color $bs-transition-duration $bs-transition-function-timing,
+				color $bs-transition-duration $bs-transition-function-timing;
+
+	&, a {
+		color: #fff;
+	}
+
+	._c-hamburger-btn__bar {
+		background-color: #fff;
+	}
+
+	&--is-scrolled {
+		background-color: rgba(#fff, .8);
+		box-shadow: 1px 0 3px rgba($bs-color-black, .1);
+
+		&, a {
+			color: $bs-color-text;
+		}
+
+		._c-hamburger-btn__bar {
+			background-color: $bs-color-text;
+		}
+	}
+
+	> ._c-container {
+		position: relative;
+	}
+
+	._c-hamburger-btn {
+		position: absolute;
+		top: 50%;
+		right: $bs-base-line-height;
+		transform: translateY(-50%);
+	}
+}
