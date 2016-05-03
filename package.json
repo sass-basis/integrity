@@ -9,9 +9,7 @@
     "url": "https://github.com/sass-basis/integrity"
   },
   "devDependencies": {
-  	"browser-sync": "^2.12.5"
-},
-  "dependencies": {
+    "browser-sync": "^2.12.5",
     "autoprefixer": "^6.3.6",
     "cssnano": "^3.5.2",
     "gulp": "^3.9.1",
