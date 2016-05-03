@@ -32,10 +32,16 @@ var BasisDrawer = function () {
 		if (!container) {
 			container = '._c-drawer';
 		}
-		this.params = Object.assign({
-			'drawer': '._c-drawer__body',
-			'btn': '._c-drawer__btn'
-		}, params);
+		if (!params) {
+			params = {};
+		}
+		this.params = params;
+		if (!this.params.drawer) {
+			this.params.drawer = '._c-drawer__body';
+		}
+		if (!this.params.btn) {
+			this.params.btn = '._c-drawer__btn';
+		}
 
 		this.container = document.querySelectorAll(container);
 		this.setListener();
@@ -140,10 +146,16 @@ var BasisFixedHeader = function () {
 		if (!container) {
 			container = '._l-container';
 		}
-		this.params = Object.assign({
-			'header': '._l-header',
-			'className': '_l-header--is-scrolled'
-		}, params);
+		if (!params) {
+			params = {};
+		}
+		this.params = params;
+		if (!this.params.header) {
+			this.params.header = '._l-header';
+		}
+		if (!this.params.class) {
+			this.params.class = '_l-header--is-scrolled';
+		}
 
 		this.container = document.querySelector(container);
 		this.header = document.querySelector(this.params.header);
@@ -158,9 +170,9 @@ var BasisFixedHeader = function () {
 			this.container.addEventListener('scroll', function (event) {
 				var scroll = container.scrollTop;
 				if (scroll > 0) {
-					_this.header.classList.add(_this.params.className);
+					_this.header.classList.add(_this.params.class);
 				} else {
-					_this.header.classList.remove(_this.params.className);
+					_this.header.classList.remove(_this.params.class);
 				}
 			}, false);
 		}
