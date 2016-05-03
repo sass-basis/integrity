@@ -66,7 +66,11 @@ gulp.task('browsersync', function() {
 	browser_sync.init( {
 		server: {
 			baseDir: "./"
-		}
+		},
+		files: [
+			'./**.html',
+			'./assets/**'
+		]
 	});
 });
 
