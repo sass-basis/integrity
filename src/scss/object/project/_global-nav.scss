@@ -5,8 +5,7 @@
 
 		> a {
 			display: block;
-			@include bs-font-size( 1.4rem );
-			@include bs-line-height( 1.4rem );
+			@include bs-font-size-line-height(1.4rem);
 			text-decoration: none;
 		}
 	}
