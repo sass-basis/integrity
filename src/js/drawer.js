@@ -60,10 +60,13 @@ export default class BasisDrawer {
 
 	toggle(drawer) {
 		event.preventDefault();
+		const btn = container.querySelector(this.params.btn);
 		if (drawer.getAttribute('aria-expanded') === 'false') {
 			this.open(drawer);
+			btn.classList.add('is-close');
 		} else {
 			this.close(drawer);
+			btn.classList.remove('is-close');
 			const has_submenus = drawer.querySelectorAll('[aria-expanded]');
 			for (let i = 0; i < has_submenus.length; i ++) {
 				this.close(has_submenus[i]);

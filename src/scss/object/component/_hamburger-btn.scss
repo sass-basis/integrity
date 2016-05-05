@@ -33,7 +33,7 @@ $hamburger-btn-padding: 5px;
 			top: ($hamburger-btn-height - $hamburger-btn-bar-height) + $hamburger-btn-padding;
 		}
 
-		.is-drawer-opened & {
+		.is-close > & {
 			&:nth-child(1), &:nth-child(3) {
 				top: ($hamburger-btn-height / 2 - $hamburger-btn-bar-height / 2) + $hamburger-btn-padding;
 			}
