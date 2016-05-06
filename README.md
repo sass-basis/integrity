@@ -13,5 +13,9 @@ Modern Browser and IE10+
 * CC0
 * https://unsplash.com/photos/HDWJiaYPK5c/
 
+#### Font Awesome
+* MIT License
+* https://fortawesome.github.io/Font-Awesome/
+
 ## License
 MIT License

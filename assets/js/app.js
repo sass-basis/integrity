@@ -101,10 +101,13 @@ var BasisDrawer = function () {
 		key: 'toggle',
 		value: function toggle(drawer) {
 			event.preventDefault();
+			var btn = container.querySelector(this.params.btn);
 			if (drawer.getAttribute('aria-expanded') === 'false') {
 				this.open(drawer);
+				btn.classList.add('is-close');
 			} else {
 				this.close(drawer);
+				btn.classList.remove('is-close');
 				var _has_submenus = drawer.querySelectorAll('[aria-expanded]');
 				for (var i = 0; i < _has_submenus.length; i++) {
 					this.close(_has_submenus[i]);
