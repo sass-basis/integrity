@@ -1,22 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var _drawer = require('./drawer.js');
-
-var _drawer2 = _interopRequireDefault(_drawer);
-
-var _fixedHeader = require('./fixed-header.js');
-
-var _fixedHeader2 = _interopRequireDefault(_fixedHeader);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-new _drawer2.default('._c-drawer');
-new _fixedHeader2.default();
-
-},{"./drawer.js":2,"./fixed-header.js":3}],2:[function(require,module,exports){
-'use strict';
-
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -131,7 +115,7 @@ var BasisDrawer = function () {
 
 exports.default = BasisDrawer;
 
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -162,6 +146,7 @@ var BasisFixedHeader = function () {
 
 		this.container = document.querySelector(container);
 		this.header = document.querySelector(this.params.header);
+		this.setHeaderWidth();
 		this.setListener();
 	}
 
@@ -178,6 +163,18 @@ var BasisFixedHeader = function () {
 					_this.header.classList.remove(_this.params.class);
 				}
 			}, false);
+
+			window.addEventListener('resize', function (event) {
+				_this.setHeaderWidth();
+			}, false);
+		}
+	}, {
+		key: 'setHeaderWidth',
+		value: function setHeaderWidth() {
+			var scrollbarWidth = document.body.clientWidth - this.container.clientWidth;
+			if (scrollbarWidth > 0) {
+				this.header.style.width = 'calc(100% - ' + scrollbarWidth + 'px)';
+			}
 		}
 	}]);
 
@@ -186,4 +183,97 @@ var BasisFixedHeader = function () {
 
 exports.default = BasisFixedHeader;
 
-},{}]},{},[1]);
+},{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BasisMenu = function () {
+	function BasisMenu(container, params) {
+		_classCallCheck(this, BasisMenu);
+
+		if (!container) {
+			container = '._c-menu';
+		}
+		if (!params) {
+			params = {};
+		}
+		this.params = params;
+
+		this.container = document.querySelectorAll(container);
+		this.setListener();
+	}
+
+	_createClass(BasisMenu, [{
+		key: 'setListener',
+		value: function setListener() {
+			var _this = this;
+
+			for (var i = 0; i < this.container.length; i++) {
+				var container = this.container[i];
+
+				var has_submenus = container.querySelectorAll('[aria-expanded]');
+
+				var _loop = function _loop(_i) {
+					var item = has_submenus[_i];
+					item.addEventListener('mouseover', function (event) {
+						_this.open(item);
+					}, false);
+
+					item.addEventListener('mouseleave', function (event) {
+						_this.close(item);
+					}, false);
+				};
+
+				for (var _i = 0; _i < has_submenus.length; _i++) {
+					_loop(_i);
+				}
+			}
+		}
+	}, {
+		key: 'open',
+		value: function open(item) {
+			item.setAttribute('aria-expanded', 'true');
+		}
+	}, {
+		key: 'close',
+		value: function close(item) {
+			item.setAttribute('aria-expanded', 'false');
+		}
+	}]);
+
+	return BasisMenu;
+}();
+
+exports.default = BasisMenu;
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+var _drawer = require('../../node_modules/sass-basis-drawer/src/js/drawer.js');
+
+var _drawer2 = _interopRequireDefault(_drawer);
+
+var _fixedHeader = require('../../node_modules/sass-basis-layout/src/js/fixed-header.js');
+
+var _fixedHeader2 = _interopRequireDefault(_fixedHeader);
+
+var _menu = require('../../node_modules/sass-basis-menu/src/js/menu.js');
+
+var _menu2 = _interopRequireDefault(_menu);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+new _drawer2.default();
+new _fixedHeader2.default();
+new _menu2.default();
+
+},{"../../node_modules/sass-basis-drawer/src/js/drawer.js":1,"../../node_modules/sass-basis-layout/src/js/fixed-header.js":2,"../../node_modules/sass-basis-menu/src/js/menu.js":3}]},{},[4]);
