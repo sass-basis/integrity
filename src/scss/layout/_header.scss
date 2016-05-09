@@ -1,5 +1,4 @@
 .#{$bs-prefix}l-header {
-	padding: ($bs-base-line-height / 2) 0;
 	transition: background-color $bs-transition-duration $bs-transition-function-timing,
 				color $bs-transition-duration $bs-transition-function-timing;
 
@@ -7,25 +6,18 @@
 		color: #fff;
 	}
 
-	._c-hamburger-btn__bar {
-		background-color: #fff;
-	}
-
-	&--is-scrolled {
-		background-color: rgba(#fff, .8);
-		box-shadow: 1px 0 3px rgba($bs-color-black, .1);
-
-		&, a {
-			color: $bs-color-text;
-		}
-
-		._c-hamburger-btn__bar {
-			background-color: $bs-color-text;
-		}
-	}
-
 	> ._c-container {
 		position: relative;
+	}
+
+	.p-site-branding {
+		padding: ($bs-base-line-height / 2) 0;
+	}
+
+	.p-global-nav {
+		a {
+			color: #fff;
+		}
 	}
 
 	._c-hamburger-btn {
@@ -33,5 +25,28 @@
 		top: 50%;
 		right: $bs-base-line-height;
 		transform: translateY(-50%);
+
+		&__bar {
+			background-color: #fff;
+		}
+	}
+
+	&--is-scrolled {
+		background-color: rgba(#fff, .8);
+		box-shadow: 1px 0 3px rgba($bs-color-black, .1);
+
+		& {
+			color: $bs-color-text;
+		}
+
+		.p-global-nav {
+			.#{$bs-prefix}c-menu__item > a {
+				color: $bs-color-text;
+			}
+		}
+
+		._c-hamburger-btn__bar {
+			background-color: $bs-color-text;
+		}
 	}
 }
