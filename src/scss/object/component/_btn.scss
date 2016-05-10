@@ -1,5 +1,5 @@
 .c-btn {
-	@extend ._c-btn;
+	@extend .#{$bs-prefix}c-btn;
 	transition: background-color $bs-transition-duration $bs-transition-function-timing;
 	border: 2px solid $accent-color;
 	color: $accent-color;
@@ -10,6 +10,6 @@
 	}
 
 	&--block {
-		@extend ._c-btn--block;
+		@extend .#{$bs-prefix}c-btn--block;
 	}
 }

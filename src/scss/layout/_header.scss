@@ -6,7 +6,7 @@
 		color: #fff;
 	}
 
-	> ._c-container {
+	> .#{$bs-prefix}c-container {
 		position: relative;
 	}
 
@@ -20,7 +20,7 @@
 		}
 	}
 
-	._c-hamburger-btn {
+	.#{$bs-prefix}c-hamburger-btn {
 		position: absolute;
 		top: 50%;
 		right: $bs-base-line-height;
@@ -45,7 +45,7 @@
 			}
 		}
 
-		._c-hamburger-btn__bar {
+		.#{$bs-prefix}c-hamburger-btn__bar {
 			background-color: $bs-color-text;
 		}
 	}
