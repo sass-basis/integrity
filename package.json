@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.html",
   "author": "inc2734",
+  "contributors": [
+    "designhehe"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
