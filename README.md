@@ -3,7 +3,7 @@ The integrity is a responsive HTML5 + CSS3 template using the Basis css framewor
 
 ## Basis
 * Repository: https://github.com/sass-basis/basis/
-* Documents : http://sass-basis.github.io/basis/
+* Documents : http://sass-basis.github.io/
 
 ## Browser support
 Modern Browser and IE10+
