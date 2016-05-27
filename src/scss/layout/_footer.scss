@@ -1,11 +1,11 @@
 .#{$bs-prefix}l-footer {
-	padding: ($bs-base-line-height * 2) 0 0;
-	background-color: $bs-color-text;
-	color: #fff;
+  padding: ($bs-base-line-height * 2) 0 0;
+  background-color: $bs-color-text;
+  color: #fff;
 
-	.p-footer-nav {
-		a {
-			color: $bs-color-gray;
-		}
-	}
+  .p-footer-nav {
+    a {
+      color: $bs-color-gray;
+    }
+  }
 }
