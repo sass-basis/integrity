@@ -1,5 +1,5 @@
 .p-global-nav {
-	@include bs-font-size-line-height(1.4rem);
+	@include bs-font-size-line-height(14px);
 
 	.#{$bs-prefix}c-menu__submenu {
 		background-color: rgba($bs-color-black, .8);
