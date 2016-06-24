@@ -3174,6 +3174,12 @@ html._disable-window-scroll ._l-container {
   transform: translateY(-50%);
 }
 
+@media (min-width: 40em) {
+  ._l-header ._c-hamburger-btn {
+    right: 1.75rem;
+  }
+}
+
 ._l-header ._c-hamburger-btn__bar {
   background-color: #fff;
 }
