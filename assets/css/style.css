@@ -3170,7 +3170,7 @@ html._disable-window-scroll ._l-container {
 ._l-header ._c-hamburger-btn {
   position: absolute;
   top: 50%;
-  right: 1.75rem;
+  right: 0.875rem;
   transform: translateY(-50%);
 }
 
