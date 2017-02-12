@@ -1,181 +1,266 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function ($) {
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+$ = 'default' in $ ? $['default'] : $;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 var BasisDrawer = function () {
-  function BasisDrawer(container, params) {
-    _classCallCheck(this, BasisDrawer);
+  function BasisDrawer() {
+    classCallCheck(this, BasisDrawer);
 
-    if (!container) {
-      container = '._c-drawer';
-    }
-
-    this.params = this.setParams(params);
-    this.container = document.querySelectorAll(container);
+    this.setIdForSubmenu();
     this.setListener();
   }
 
-  _createClass(BasisDrawer, [{
-    key: 'setParams',
-    value: function setParams(params) {
-      if (!params) {
-        params = {};
-      }
-      if (!params.drawer) {
-        params.drawer = '._c-drawer__body';
-      }
-      if (!params.btn) {
-        params.btn = '._c-drawer__btn';
-      }
-      if (!params.toggleSubmenu) {
-        params.toggleSubmenu = '._c-drawer__toggle';
-      }
-      return params;
-    }
-  }, {
+  createClass(BasisDrawer, [{
     key: 'setListener',
     value: function setListener() {
       var _this = this;
 
-      var _loop = function _loop(i) {
-        var container = _this.container[i];
-        var drawer = container.querySelector(_this.params.drawer);
-        var btn = container.querySelector(_this.params.btn);
+      var btns = $('[data-c="drawer-btn"][aria-controls]');
+      btns.each(function (i, e) {
+        var btn = $(e);
+        var drawer = $('#' + btn.attr('aria-controls'));
+        var container = drawer.parent('[data-c="drawer"]');
 
-        container.addEventListener('click', function (event) {
-          _this.close(drawer);
-          btn.classList.remove('is-close');
-        }, false);
+        container.on('click', function (event) {
+          _this.close(btn);
+          _this.hidden(drawer);
+          _this.close(drawer.find('[data-c="drawer__toggle"]'));
+          _this.hidden(drawer.find('[data-c="drawer__submenu"]'));
+        });
 
-        drawer.addEventListener('click', function (event) {
+        drawer.on('click', function (event) {
           event.stopPropagation();
-        }, false);
+        });
 
-        btn.addEventListener('click', function (event) {
-          _this.toggle(drawer);
-          btn.classList.toggle('is-close');
+        btn.on('click', function (event) {
+          event.preventDefault();
+          _this.toggleMenu(btn);
           event.stopPropagation();
-        }, false);
+        });
 
-        window.addEventListener('resize', function (event) {
-          _this.close(drawer);
-          btn.classList.remove('is-close');
-        }, false);
+        $(window).on('resize', function (event) {
+          _this.hidden(drawer);
+          _this.close(btn);
+        });
+      });
 
-        var has_subitems = drawer.querySelectorAll('[aria-expanded]');
-
-        var _loop2 = function _loop2(_i) {
-          var toggleSubmenu = has_subitems[_i].querySelector(_this.params.toggleSubmenu);
-          if (toggleSubmenu) {
-            toggleSubmenu.addEventListener('click', function (event) {
-              _this.toggle(has_subitems[_i]);
-              event.stopPropagation();
-            }, false);
-          }
-        };
-
-        for (var _i = 0; _i < has_subitems.length; _i++) {
-          _loop2(_i);
-        }
-      };
-
-      for (var i = 0; i < this.container.length; i++) {
-        _loop(i);
-      }
+      var toggleBtns = $('[data-c="drawer__toggle"][aria-controls]');
+      toggleBtns.each(function (i, e) {
+        var toggleBtn = $(e);
+        var submenu = $('#' + toggleBtn.attr('aria-controls'));
+        toggleBtn.on('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          _this.toggleMenu(toggleBtn);
+        });
+      });
     }
   }, {
-    key: 'toggle',
-    value: function toggle(drawer) {
-      event.preventDefault();
-      if (drawer.getAttribute('aria-expanded') === 'false') {
-        this.open(drawer);
+    key: 'toggleMenu',
+    value: function toggleMenu(btn) {
+      var menu = $('#' + btn.attr('aria-controls'));
+      if ('false' == btn.attr('aria-expanded')) {
+        this.open(btn);
+        this.show(menu);
       } else {
-        this.close(drawer);
+        this.close(btn);
+        this.hidden(menu);
+        this.close(menu.find('[data-c="drawer__toggle"]'));
+        this.hidden(menu.find('[data-c="drawer__submenu"]'));
       }
     }
   }, {
     key: 'open',
-    value: function open(drawer) {
-      drawer.setAttribute('aria-expanded', 'true');
+    value: function open(target) {
+      target.attr('aria-expanded', 'true');
     }
   }, {
     key: 'close',
-    value: function close(drawer) {
-      drawer.setAttribute('aria-expanded', 'false');
-      var has_subitems = drawer.querySelectorAll('[aria-expanded]');
-      for (var i = 0; i < has_subitems.length; i++) {
-        this.close(has_subitems[i]);
-      }
+    value: function close(target) {
+      target.attr('aria-expanded', 'false');
+    }
+  }, {
+    key: 'show',
+    value: function show(target) {
+      target.attr('aria-hidden', 'false');
+    }
+  }, {
+    key: 'hidden',
+    value: function hidden(target) {
+      target.attr('aria-hidden', 'true');
+    }
+  }, {
+    key: 'setIdForSubmenu',
+    value: function setIdForSubmenu() {
+      $('[data-c="drawer__submenu"][aria-hidden]').each(function (i, e) {
+        var random = Math.floor(Math.random() * (9999999 - 1000000) + 1000000);
+        var time = new Date().getTime();
+        var id = 'drawer-' + time + random;
+        var submenu = $(e);
+        var toggleBtn = submenu.siblings('[data-c="drawer__toggle"]');
+        if (submenu.length && toggleBtn.length) {
+          submenu.attr('id', id);
+          toggleBtn.attr('aria-controls', '' + id);
+        }
+      });
     }
   }]);
-
   return BasisDrawer;
 }();
 
-exports.default = BasisDrawer;
+var BasisNavbar = function () {
+  function BasisNavbar() {
+    classCallCheck(this, BasisNavbar);
 
-},{}],2:[function(require,module,exports){
+    this.items = $('[data-c="navbar__item"][aria-haspopup="true"], [data-c="navbar__subitem"][aria-haspopup="true"]');
+    this.setListener();
+  }
+
+  createClass(BasisNavbar, [{
+    key: 'setListener',
+    value: function setListener() {
+      var _this = this;
+
+      this.items.each(function (i, e) {
+        var item = $(e);
+        item.on('mouseover focus', function (event) {
+          _this.show(item.children('[data-c="navbar__submenu"]'));
+        });
+
+        item.on('mouseleave', function (event) {
+          _this.hidden(item.children('[data-c="navbar__submenu"]'));
+        });
+      });
+    }
+  }, {
+    key: 'show',
+    value: function show(submenu) {
+      submenu.attr('aria-hidden', 'false');
+    }
+  }, {
+    key: 'hidden',
+    value: function hidden(submenu) {
+      submenu.attr('aria-hidden', 'true');
+    }
+  }]);
+  return BasisNavbar;
+}();
+
+var BasisPageEffect = function () {
+  function BasisPageEffect(params) {
+    classCallCheck(this, BasisPageEffect);
+
+    this.params = $.extend({
+      duration: 200
+    }, params);
+    this.container = $('[data-c="page-effect"]');
+    this.pageOutObject = $('[data-page-effect-link="true"], a[href]:not([target="_blank"], [href^="#"], [href*="javascript"], [href*=".jpg"], [href*=".jpeg"], [href*=".gif"], [href*=".png"], [href*=".mov"], [href*=".swf"], [href*=".mp4"], [href*=".flv"], [href*=".avi"], [href*=".mp3"], [href*=".pdf"], [href*=".zip"], [href^="mailto:"], [data-page-effect-link="false"])');
+    this.setListener();
+  }
+
+  createClass(BasisPageEffect, [{
+    key: 'setListener',
+    value: function setListener() {
+      var _this = this;
+
+      $(window).on('load', function (event) {
+        _this.hide();
+      });
+
+      this.pageOutObject.each(function (i, e) {
+        var link = $(e);
+        link.on('click', function (event) {
+          if (event.shiftKey || event.ctrlKey || event.metaKey) {
+            return;
+          }
+
+          event.preventDefault();
+          _this.show();
+          var url = link.attr('href');
+          _this.moveLocation(url);
+        });
+      });
+    }
+  }, {
+    key: 'moveLocation',
+    value: function moveLocation(url) {
+      setTimeout(function () {
+        location.href = url;
+      }, this.params['duration']);
+    }
+  }, {
+    key: 'hide',
+    value: function hide() {
+      this.container.attr('aria-hidden', 'true').attr('data-page-effect', 'fadein');
+    }
+  }, {
+    key: 'show',
+    value: function show() {
+      this.container.attr('aria-hidden', 'false').attr('data-page-effect', 'fadeout');
+    }
+  }]);
+  return BasisPageEffect;
+}();
+
+new BasisDrawer();
+
+new BasisNavbar();
+
+new BasisPageEffect();
+
 /**
  * IF "disable-window-scroll", to set the intended header width.
  */
 
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 var BasisFixedHeader = function () {
-  function BasisFixedHeader(container, params) {
+  function BasisFixedHeader() {
     var _this = this;
 
-    _classCallCheck(this, BasisFixedHeader);
+    classCallCheck(this, BasisFixedHeader);
 
-    if (!container) {
-      container = '._l-container';
-    }
-
-    this.params = this.setParams(params);
-    this.container = document.querySelector(container);
-    this.header = document.querySelector(this.params.header);
-    this.isDisableWindowScroll = document.getElementsByTagName('html')[0].classList.contains('_disable-window-scroll');
+    this.container = $('[data-l="container"]');
+    this.header = $('[data-l="header"]');
+    this.windowScroll = $('html').attr('data-window-scroll');
 
     if (this.shouldSetHeaderWidth()) {
       this.setHeaderWidth();
 
-      window.addEventListener('resize', function (event) {
+      $(window).on('resize', function (event) {
         _this.setHeaderWidth();
-      }, false);
+      });
     }
   }
 
-  _createClass(BasisFixedHeader, [{
-    key: 'setParams',
-    value: function setParams(params) {
-      if (!params) {
-        params = {};
-      }
-      if (!params.header) {
-        params.header = '._l-header';
-      }
-      return params;
-    }
-  }, {
+  createClass(BasisFixedHeader, [{
     key: 'shouldSetHeaderWidth',
     value: function shouldSetHeaderWidth() {
-      var position = document.defaultView.getComputedStyle(this.header, null).position;
-      if (position === 'fixed' && this.isDisableWindowScroll) {
+      var position = this.header.css('position');
+      if ('fixed' === position && 'false' == this.windowScroll) {
         return true;
       }
       return false;
@@ -183,227 +268,84 @@ var BasisFixedHeader = function () {
   }, {
     key: 'setHeaderWidth',
     value: function setHeaderWidth() {
-      var scrollbarWidth = document.body.clientWidth - this.container.clientWidth;
+      var scrollbarWidth = $('body').innerWidth() - this.container[0].clientWidth;
       if (scrollbarWidth > 0) {
-        this.header.style.width = 'calc(100% - ' + scrollbarWidth + 'px)';
+        this.header.width('calc(100% - ' + scrollbarWidth + 'px)');
       }
     }
   }]);
-
   return BasisFixedHeader;
 }();
 
-exports.default = BasisFixedHeader;
-
-},{}],3:[function(require,module,exports){
 /**
- * This is for the overlay header.
- * If scroll the page, added a class "is-scrolled".
+ * This is for the sticky header.
  */
 
-'use strict';
+var BasisStickyHeader = function () {
+  function BasisStickyHeader() {
+    classCallCheck(this, BasisStickyHeader);
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+    this.container = $('[data-l="container"]');
+    this.header = $('[data-l="header"]');
+    this.contents = $('[data-l="contents"]');
+    this.windowScroll = $('html').attr('data-window-scroll');
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var BasisOverlayHeader = function () {
-  function BasisOverlayHeader(container, params) {
-    _classCallCheck(this, BasisOverlayHeader);
-
-    if (!container) {
-      container = '._l-container';
-    }
-
-    this.params = this.setParams(params);
-    this.container = document.querySelector(container);
-    this.header = document.querySelector(this.params.header);
-    this.isDisableWindowScroll = document.getElementsByTagName('html')[0].classList.contains('_disable-window-scroll');
-
+    this.setScroll();
+    this.setSticky();
     this.setListener();
   }
 
-  _createClass(BasisOverlayHeader, [{
-    key: 'setParams',
-    value: function setParams(params) {
-      if (!params) {
-        params = {};
-      }
-      if (!params.header) {
-        params.header = '._l-header';
-      }
-      if (!params.class_sticky) {
-        params.class_sticky = '_l-header--sticky';
-      }
-      if (!params.class_overlay) {
-        params.class_overlay = '_l-header--overlay';
-      }
-      if (!params.class_scroll) {
-        params.class_scroll = '_l-header--is-scrolled';
-      }
-      return params;
-    }
-  }, {
+  createClass(BasisStickyHeader, [{
     key: 'setListener',
     value: function setListener() {
       var _this = this;
 
       var target = this.getScrollTarget();
-      target.addEventListener('scroll', function (event) {
-        var scroll = _this.getScrollTop();
-        _this.setClassForScroll(scroll);
-        _this.setClassForSticky(scroll);
-      }, false);
+
+      target.on('scroll resize', function (event) {
+        _this.setScroll();
+        _this.setSticky();
+      });
     }
   }, {
-    key: 'setClassForScroll',
-    value: function setClassForScroll(scroll) {
+    key: 'setScroll',
+    value: function setScroll() {
+      var scroll = this.getScrollTop();
+
       if (scroll > 0) {
-        this.header.classList.add(this.params.class_scroll);
+        $('html').attr('data-scrolled', 'true');
       } else {
-        this.header.classList.remove(this.params.class_scroll);
+        $('html').attr('data-scrolled', 'false');
       }
     }
   }, {
-    key: 'setClassForSticky',
-    value: function setClassForSticky(scroll) {
-      if (this.header.classList.contains(this.params.class_sticky)) {
-        var header_height = this.header.offsetHeight;
-        if (scroll > 0) {
-          this.header.nextElementSibling.style.paddingTop = header_height + 'px';
-          this.header.classList.add(this.params.class_overlay);
-        } else {
-          this.header.nextElementSibling.style.paddingTop = 0;
-          this.header.classList.remove(this.params.class_overlay);
-        }
+    key: 'setSticky',
+    value: function setSticky() {
+      if ('sticky' !== this.header.attr('data-l-header-type')) {
+        return;
       }
+      var headerHeight = this.header.outerHeight();
+      this.contents.css('marginTop', headerHeight + 'px');
     }
   }, {
     key: 'getScrollTarget',
     value: function getScrollTarget() {
-      if (this.isDisableWindowScroll) {
+      if ('false' == this.windowScroll) {
         return this.container;
       } else {
-        return window;
+        return $(window);
       }
     }
   }, {
     key: 'getScrollTop',
     value: function getScrollTop() {
-      var target = this.getScrollTarget();
-      if (this.isDisableWindowScroll) {
-        return this.container.scrollTop;
-      } else {
-        return window.pageYOffset;
-      }
+      return this.getScrollTarget().scrollTop();
     }
   }]);
-
-  return BasisOverlayHeader;
+  return BasisStickyHeader;
 }();
 
-exports.default = BasisOverlayHeader;
+new BasisFixedHeader();
+new BasisStickyHeader();
 
-},{}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var BasisMenu = function () {
-  function BasisMenu(container, params) {
-    _classCallCheck(this, BasisMenu);
-
-    if (!container) {
-      container = '._c-menu';
-    }
-    if (!params) {
-      params = {};
-    }
-    this.params = params;
-
-    this.container = document.querySelectorAll(container);
-    this.setListener();
-  }
-
-  _createClass(BasisMenu, [{
-    key: 'setListener',
-    value: function setListener() {
-      var _this = this;
-
-      for (var i = 0; i < this.container.length; i++) {
-        var container = this.container[i];
-
-        var has_submenus = container.querySelectorAll('[aria-expanded]');
-
-        var _loop = function _loop(_i) {
-          var item = has_submenus[_i];
-          item.addEventListener('mouseover', function (event) {
-            _this.open(item);
-          }, false);
-
-          item.addEventListener('mouseleave', function (event) {
-            _this.close(item);
-          }, false);
-        };
-
-        for (var _i = 0; _i < has_submenus.length; _i++) {
-          _loop(_i);
-        }
-      }
-    }
-  }, {
-    key: 'open',
-    value: function open(item) {
-      item.setAttribute('aria-expanded', 'true');
-    }
-  }, {
-    key: 'close',
-    value: function close(item) {
-      item.setAttribute('aria-expanded', 'false');
-    }
-  }]);
-
-  return BasisMenu;
-}();
-
-exports.default = BasisMenu;
-
-},{}],5:[function(require,module,exports){
-'use strict';
-
-var _drawer = require('../../node_modules/sass-basis-drawer/src/js/drawer.js');
-
-var _drawer2 = _interopRequireDefault(_drawer);
-
-var _fixedHeader = require('../../node_modules/sass-basis-layout/src/js/fixed-header.js');
-
-var _fixedHeader2 = _interopRequireDefault(_fixedHeader);
-
-var _overlayHeader = require('../../node_modules/sass-basis-layout/src/js/overlay-header.js');
-
-var _overlayHeader2 = _interopRequireDefault(_overlayHeader);
-
-var _menu = require('../../node_modules/sass-basis-menu/src/js/menu.js');
-
-var _menu2 = _interopRequireDefault(_menu);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-new _drawer2.default();
-new _fixedHeader2.default();
-new _overlayHeader2.default();
-new _menu2.default();
-
-},{"../../node_modules/sass-basis-drawer/src/js/drawer.js":1,"../../node_modules/sass-basis-layout/src/js/fixed-header.js":2,"../../node_modules/sass-basis-layout/src/js/overlay-header.js":3,"../../node_modules/sass-basis-menu/src/js/menu.js":4}]},{},[5]);
+}(jQuery));
