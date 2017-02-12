@@ -151,8 +151,6 @@ gulp.task('zip', ['build'], function(){
   return gulp.src(
       [
         '**',
-        '.gitignore',
-        '.editorconfig',
         '!./.travis.yml',
         '!./node_modules',
         '!./node_modules/**',
