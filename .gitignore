@@ -1,6 +1,7 @@
 node_modules/
 .DS_Store
-assets/css/
-assets/js/
 gh-pages/
+integrity.zip
+public/
 *.log
+.sass-cache/

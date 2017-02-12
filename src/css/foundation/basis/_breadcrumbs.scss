@@ -1,0 +1,25 @@
+.#{$_prefix}c-breadcrumbs {
+  @include _font-size-line-height($_base-font-size-px - 2);
+
+  &, a {
+    color: $_color-gray;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  &__item {
+    &:nth-child(n + 2) {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+
+      &::before {
+        content: "\f105";
+      }
+    }
+  }
+}

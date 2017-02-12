@@ -1,26 +1,36 @@
 language: node_js
 sudo: false
 node_js:
-  - '4.2'
+- '6'
 branches:
   only:
-    - master
-    - develop
+  - master
+  - develop
+  - "/v\\d+\\.\\d+\\.\\d+?.*/"
 env:
   global:
-    - GIT_COMMITTER_NAME=travis-ci
-    - GIT_COMMITTER_EMAIL=inc@2inc.org
-    - GIT_AUTHOR_NAME=travis-ci
-    - GIT_AUTHOR_EMAIL=inc@2inc.org
-    - secure: "GlGm3Lf3jHhO9yCcN6ZlwaiYxw3ET5gYz9O3s7LGGRIwwT2J8znvD1cHtvzNw8CBXQtYOUGH6K5MAXBMxfyKlCzFIUbdoxpSUMqu9ETVEo7dt8D7EtKG+3Q75+54N5W0MIfz1NsMUWzovyeCftaocRyUQReQNvn8/e3BhstFQ/AcPZvwGDsbZi1CjtsP1WwQlbesusyPlEyFVjze6I4bAFvgpiv/EZnaDZvc9ZG1qj7UWM/EEh0RAXuYdW/uF2HhCca2BMEQqTW4f6fOXh/dGVGcapYZJN/t80y5RHI4OWf/yW2KGDg+XTdwQ8DXnodzh3cUGpVOSojZCb8ValWbdX9vJOURenc2iJA6uTSh3e0GPCugT3wXLKLwR4gmM3PCbwevaYS1aNu+hMYSVM7+V37SQXEhdw8jtseEerjahNRrX/eTF6ug3sp1VufypXLrDJ3jqqNAwIvS4dLo+1aQh8wvueS4HVPjWQAMAukiFfQf/Tnmm3Is4uV0vfQoRAH8l7mBOcRk9JrTCWffVmLGj8GjKb+0tN0c8wLRAvnvAnH3OQRuGhMOfaie02nsIEwgAOp2XbioocRMxHi/m/jcUVpH3/7BEY/SxCw9cNMrsa64TyS9kQWh6c6OkC6Kr/PcltJh9x2qP8653y5usgRXSfwxM+iLyz27lsVcoDSstPk="
-before_script:
-  - git clone -b gh-pages --quiet https://github.com/sass-basis/integrity.git gh-pages
+  - GIT_COMMITTER_NAME=travis-ci
+  - GIT_COMMITTER_EMAIL=inc@2inc.org
+  - GIT_AUTHOR_NAME=travis-ci
+  - GIT_AUTHOR_EMAIL=inc@2inc.org
+  - secure: GlGm3Lf3jHhO9yCcN6ZlwaiYxw3ET5gYz9O3s7LGGRIwwT2J8znvD1cHtvzNw8CBXQtYOUGH6K5MAXBMxfyKlCzFIUbdoxpSUMqu9ETVEo7dt8D7EtKG+3Q75+54N5W0MIfz1NsMUWzovyeCftaocRyUQReQNvn8/e3BhstFQ/AcPZvwGDsbZi1CjtsP1WwQlbesusyPlEyFVjze6I4bAFvgpiv/EZnaDZvc9ZG1qj7UWM/EEh0RAXuYdW/uF2HhCca2BMEQqTW4f6fOXh/dGVGcapYZJN/t80y5RHI4OWf/yW2KGDg+XTdwQ8DXnodzh3cUGpVOSojZCb8ValWbdX9vJOURenc2iJA6uTSh3e0GPCugT3wXLKLwR4gmM3PCbwevaYS1aNu+hMYSVM7+V37SQXEhdw8jtseEerjahNRrX/eTF6ug3sp1VufypXLrDJ3jqqNAwIvS4dLo+1aQh8wvueS4HVPjWQAMAukiFfQf/Tnmm3Is4uV0vfQoRAH8l7mBOcRk9JrTCWffVmLGj8GjKb+0tN0c8wLRAvnvAnH3OQRuGhMOfaie02nsIEwgAOp2XbioocRMxHi/m/jcUVpH3/7BEY/SxCw9cNMrsa64TyS9kQWh6c6OkC6Kr/PcltJh9x2qP8653y5usgRXSfwxM+iLyz27lsVcoDSstPk=
+cache:
+  directories:
+  - node_modules
+install:
+- npm install
 script:
-  - cd gh-pages
-  - ls | xargs rm -rf
-  - rm -f .gitignore
-  - rm -f .travis.yml
-  - cd ../
-  - npm run deploy_gh_pages
+- npm run gulp build
+- ls -la public
 after_success:
-  - bash ./bin/deploy.sh
+- bash ./bin/gh-pages.sh
+before_deploy:
+- npm run gulp zip
+deploy:
+  provider: releases
+  api_key:
+    secure: eRf6WyU8cVq44fqaADpOUQ3kpnyzheOuzVVekCuVG1xnwxZFhtj+ecrCWziTJPHOgoIWEzCMXvs7QDovdXvFI2tUwmqHQ1QgfDh9uQWNJGszmBb4out0SfcvLWvPSnFbu9DDMZ01mMVbU8yxw1aGFzPUom19S7r2S2u4n8crzrJSStaRXvVkUdhbr2t9zKVzymj/TYVPNgmI/aNwAtTWqt8q3t2EngM68zmx8MosOL8PIzEXm55ygq8qFgcg4yzs3OrLfjrK143A85+XGaszYz4bT+c0gZ5lLwcyupeTbuHUnmkOcNmNfrTI3lVH8uhO0h9m+f8QFbxIJ/41A7kv6nVHBhhx1NRJ6nf9gN5ZPSOwyL/9oGT+Fv2hSIhXGodZPNNaaoTX2Z8B7nl3zJ27bFFq7v47hIDI48qOmBejS2sagVGEERTiEeXoN5cLxKC+RSu7IVofFwFgCtlzZvLA2w4zMj2rUSDlk/bpF2/b/qV9k/v4GjV+yBsDCbBRbdCbw/53g5JgM6y1NlNgAb4ImQONTJERcdmpuhJ8PHaJwoOseFYZHVKPcHnIvh1XNJjrNg35ofa1qfZzYXfzI3EUkBh3T8mUKjUPBMdSLEyxQt5wWfrzISHRHAxhiz22v4BAZNpQZup3FvkLdKQKJp2BstSm/xzgbDhSbbiQ4+BYBAQ=
+  file: integrity.zip
+  on:
+    tags: true
+    repo: sass-basis/integrity
