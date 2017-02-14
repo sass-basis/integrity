@@ -1,5 +1,5 @@
 /*!
- * Name: Basis v6.0.1
+ * Name: Basis v6.0.2
  * Description: A lightweight responsive Sass/CSS framework based on flexible box.
  * Author: Takashi Kitajima ( inc2734 )
  * Author URL: https://2inc.org
@@ -437,6 +437,9 @@ code, kbd, pre, samp {
 
 input, textarea, keygen, select, button {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+input, textarea, optgroup, select, button {
+  line-height: 1.75; }
 
 img {
   height: auto;
@@ -1276,13 +1279,13 @@ label {
     -ms-flex-align: baseline;
     align-items: baseline; }
   ._c-row--collapse {
-    margin-right: 0rem;
-    margin-left: 0rem;
-    margin-bottom: 0rem; }
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0; }
     ._c-row--collapse > ._c-row__col {
-      padding-right: 0rem;
-      padding-left: 0rem;
-      margin-bottom: 0rem; }
+      padding-right: 0;
+      padding-left: 0;
+      margin-bottom: 0; }
   ._c-row--margin {
     margin-right: -0.875rem;
     margin-left: -0.875rem;
@@ -1346,13 +1349,13 @@ label {
       -ms-flex-align: baseline;
       align-items: baseline; }
     ._c-row--md-collapse {
-      margin-right: 0rem;
-      margin-left: 0rem;
-      margin-bottom: 0rem; }
+      margin-right: 0;
+      margin-left: 0;
+      margin-bottom: 0; }
       ._c-row--md-collapse > ._c-row__col {
-        padding-right: 0rem;
-        padding-left: 0rem;
-        margin-bottom: 0rem; }
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: 0; }
     ._c-row--md-margin {
       margin-right: -0.875rem;
       margin-left: -0.875rem;
@@ -1416,13 +1419,13 @@ label {
       -ms-flex-align: baseline;
       align-items: baseline; }
     ._c-row--lg-collapse {
-      margin-right: 0rem;
-      margin-left: 0rem;
-      margin-bottom: 0rem; }
+      margin-right: 0;
+      margin-left: 0;
+      margin-bottom: 0; }
       ._c-row--lg-collapse > ._c-row__col {
-        padding-right: 0rem;
-        padding-left: 0rem;
-        margin-bottom: 0rem; }
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: 0; }
     ._c-row--lg-margin {
       margin-right: -0.875rem;
       margin-left: -0.875rem;
