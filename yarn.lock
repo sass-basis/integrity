@@ -3484,9 +3484,9 @@ sass-basis-margin-between-children@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/sass-basis-margin-between-children/-/sass-basis-margin-between-children-2.0.1.tgz#0df98815a80c5b85bea44945ca1b55766a93feb3"
 
-sass-basis@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/sass-basis/-/sass-basis-6.0.1.tgz#680d462fcf1ea98ac6410e76a6dcfa6c5f213560"
+sass-basis@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/sass-basis/-/sass-basis-6.0.2.tgz#b3b39ce2bb8521267d03308db07093bffe9de3e1"
   dependencies:
     node-normalize-scss "^1.4.0"
 
