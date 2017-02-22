@@ -1,11 +1,18 @@
 /*!
- * Name: Basis v6.0.2
+ * Name: Basis v6.1.2
  * Description: A lightweight responsive Sass/CSS framework based on flexible box.
  * Author: Takashi Kitajima ( inc2734 )
  * Author URL: https://2inc.org
  * GitHub Repository: https://github.com/sass-basis/basis
  * License: MIT
  */
+@font-face {
+  font-family: 'basis';
+  src: url("../font/basis.eot");
+  src: url("../font/basis.eot#iefix") format("embedded-opentype"), url("../font/basis.ttf") format("truetype"), url("../font/basis.woff") format("woff"), url("../font/basis.svg#basis") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -538,100 +545,41 @@ pre {
 label {
   cursor: pointer; }
 
+/*
+---
+name: Alert
+category:
+  - object/component
+  - object/component/alert
+---
+
+```html
+<div class="_c-alert" role="alert">
+  ...
+</div>
+```
+*/
 ._c-alert {
   display: block;
-  border: 1px solid #cccccc;
   background-color: #fff;
+  border: 1px solid #cccccc;
   border-radius: 3px;
   padding: 1rem; }
 
-._c-balloon-bottom {
-  position: relative;
-  background-color: #fff;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-  padding: 1.3125rem; }
-  ._c-balloon-bottom::before, ._c-balloon-bottom::after {
-    content: '';
-    display: block;
-    margin-left: -5px; }
-  ._c-balloon-bottom::before {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 10px 5px 0 5px;
-    border-color: #cccccc transparent transparent transparent; }
-  ._c-balloon-bottom::after {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 10px 5px 0 5px;
-    border-color: #fff transparent transparent transparent; }
+/*
+---
+name: Balloon (Top)
+category:
+  - object/component
+  - object/component/balloon
+---
 
-._c-balloon-left {
-  position: relative;
-  background-color: #fff;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-  padding: 1.3125rem; }
-  ._c-balloon-left::before, ._c-balloon-left::after {
-    content: '';
-    display: block;
-    margin-top: -5px; }
-  ._c-balloon-left::before {
-    position: absolute;
-    top: 50%;
-    left: -10px;
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 5px 10px 5px 0;
-    border-color: transparent #cccccc transparent transparent; }
-  ._c-balloon-left::after {
-    position: absolute;
-    top: 50%;
-    left: -8px;
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 5px 10px 5px 0;
-    border-color: transparent #fff transparent transparent; }
-
-._c-balloon-right {
-  position: relative;
-  background-color: #fff;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-  padding: 1.3125rem; }
-  ._c-balloon-right::before, ._c-balloon-right::after {
-    content: '';
-    display: block;
-    margin-top: -5px; }
-  ._c-balloon-right::before {
-    position: absolute;
-    top: 50%;
-    right: -10px;
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 5px 0 5px 10px;
-    border-color: transparent transparent transparent #cccccc; }
-  ._c-balloon-right::after {
-    position: absolute;
-    top: 50%;
-    right: -8px;
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 5px 0 5px 10px;
-    border-color: transparent transparent transparent #fff; }
-
+```html
+<div class="_c-balloon-top">
+  ...
+</div>
+```
+*/
 ._c-balloon-top {
   position: relative;
   background-color: #fff;
@@ -661,6 +609,150 @@ label {
     border-width: 0 5px 10px 5px;
     border-color: transparent transparent #fff transparent; }
 
+/*
+---
+name: Balloon (Right)
+category:
+  - object/component
+  - object/component/balloon
+---
+
+```html
+<div class="_c-balloon-right">
+  ...
+</div>
+```
+*/
+._c-balloon-right {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  padding: 1.3125rem; }
+  ._c-balloon-right::before, ._c-balloon-right::after {
+    content: '';
+    display: block;
+    margin-top: -5px; }
+  ._c-balloon-right::before {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 10px;
+    border-color: transparent transparent transparent #cccccc; }
+  ._c-balloon-right::after {
+    position: absolute;
+    top: 50%;
+    right: -8px;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 10px;
+    border-color: transparent transparent transparent #fff; }
+
+/*
+---
+name: Balloon (Bottom)
+category:
+  - object/component
+  - object/component/balloon
+---
+
+```html
+<div class="_c-balloon-bottom">
+  ...
+</div>
+```
+*/
+._c-balloon-bottom {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  padding: 1.3125rem; }
+  ._c-balloon-bottom::before, ._c-balloon-bottom::after {
+    content: '';
+    display: block;
+    margin-left: -5px; }
+  ._c-balloon-bottom::before {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 10px 5px 0 5px;
+    border-color: #cccccc transparent transparent transparent; }
+  ._c-balloon-bottom::after {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 10px 5px 0 5px;
+    border-color: #fff transparent transparent transparent; }
+
+/*
+---
+name: Balloon (Left)
+category:
+  - object/component
+  - object/component/balloon
+---
+
+```html
+<div class="_c-balloon-left">
+  ...
+</div>
+```
+*/
+._c-balloon-left {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  padding: 1.3125rem; }
+  ._c-balloon-left::before, ._c-balloon-left::after {
+    content: '';
+    display: block;
+    margin-top: -5px; }
+  ._c-balloon-left::before {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 5px 10px 5px 0;
+    border-color: transparent #cccccc transparent transparent; }
+  ._c-balloon-left::after {
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 5px 10px 5px 0;
+    border-color: transparent #fff transparent transparent; }
+
+/*
+---
+name: Breadcrumbs
+category:
+  - object/component
+  - object/component/breadcrumbs
+---
+
+```html
+<ol class="_c-breadcrumbs">
+  <li class="_c-breadcrumbs__item"><a href="#">...</a></li>
+  <li class="_c-breadcrumbs__item">...</li>
+</ol>
+```
+*/
 ._c-breadcrumbs {
   list-style: none;
   margin: 0;
@@ -669,18 +761,46 @@ label {
     display: inline; }
     ._c-breadcrumbs__item:nth-child(n + 2)::before {
       margin: 0 5px;
-      content: '>'; }
+      font-family: 'basis';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "\e900"; }
 
+/*
+---
+name: Button
+category:
+  - object/component
+  - object/component/btn
+---
+
+```html
+<a class="_c-btn" role="button">btn</a>
+```
+```html
+<a class="_c-btn _c-btn--block" role="button">btn</a>
+```
+```html
+<a class="_c-btn _c-btn--ghost" role="button">btn</a>
+```
+*/
 ._c-btn {
   display: inline-block;
   cursor: pointer;
+  line-height: 1;
   overflow: hidden;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   white-space: nowrap;
-  border: 1px solid #cccccc;
   background-color: #fff;
+  border: 1px solid #cccccc;
   color: #333;
   padding: 0.5rem 2rem; }
   ._c-btn--block {
@@ -690,6 +810,28 @@ label {
     border: 1px solid #fff;
     color: #fff; }
 
+/*
+---
+name: Card
+category:
+  - object/component
+  - object/component/card
+---
+
+```html
+<div class="_c-card">
+  <div class="_c-card__figure">
+    <img src="/aigis_assets/images/dummy.jpg">
+  </div>
+  <div class="_c-card__body">
+    ...
+  </div>
+  <div class="_c-card__action">
+    ...
+  </div>
+</div>
+```
+*/
 ._c-card, .p-vertical-media {
   display: -ms-flexbox;
   display: flex;
@@ -709,50 +851,83 @@ label {
     border-top: 1px solid #eeeeee;
     padding: 0.875rem 1.3125rem; }
 
+/*
+---
+name: Checkbox
+category:
+  - object/component
+  - object/component/checkbox
+---
+
+```html
+<label>
+  <span class="_c-checkbox">
+    <input type="checkbox">
+    <span class="_c-checkbox__control"></span>
+  </span>
+  ...
+</label>
+```
+*/
 ._c-checkbox {
   position: relative;
   display: inline-block;
-  margin-right: 0.5rem;
-  padding-left: 1.5rem; }
-  ._c-checkbox > [type="checkbox"] {
+  height: 16px;
+  width: 16px; }
+  ._c-checkbox > [type="checkbox"], ._c-checkbox__control, ._c-checkbox__control::before, ._c-checkbox__control::after {
     position: absolute;
-    top: 0.375rem;
+    top: 0;
     left: 0;
+    display: block;
+    height: 16px;
+    width: 16px; }
+  ._c-checkbox > [type="checkbox"] {
     z-index: 1;
-    height: 1rem;
-    width: 1rem;
     cursor: pointer;
     opacity: 0 !important;
     outline: 0; }
-    ._c-checkbox > [type="checkbox"]:checked ~ ._c-checkbox__label::after {
+    ._c-checkbox > [type="checkbox"]:checked ~ ._c-checkbox__control::after {
       opacity: 1; }
-  ._c-checkbox__label::before {
-    position: absolute;
-    top: 0.375rem;
-    left: 0;
-    z-index: 0;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 3px;
-    content: '';
-    display: inline-block;
-    background-color: #fff;
-    border: 1px solid #cccccc; }
-  ._c-checkbox__label::after {
-    position: absolute;
-    top: 0.625rem;
-    left: 0.25rem;
-    z-index: 0;
-    height: 0.5rem;
-    width: 0.5rem;
-    border-radius: 2px;
-    content: '';
-    display: inline-block;
-    background-color: #666666;
-    opacity: 0; }
-  ._c-checkbox--block {
-    display: block; }
+  ._c-checkbox__control {
+    z-index: 0; }
+    ._c-checkbox__control::before {
+      content: '';
+      background-color: #fff;
+      border: 1px solid #cccccc;
+      border-radius: 3px; }
+    ._c-checkbox__control::after {
+      font-family: 'basis';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "\e901";
+      opacity: 0;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
 
+/*
+---
+name: Container (Fluid)
+category:
+  - object/component
+  - object/component/container
+---
+
+```html
+<div class="_c-container-fluid">
+  ...
+</div>
+```
+*/
 ._c-container-fluid, ._c-container {
   padding-right: 0.875rem;
   padding-left: 0.875rem; }
@@ -761,6 +936,18 @@ label {
       padding-right: 1.75rem;
       padding-left: 1.75rem; } }
 
+/*
+---
+name: Container
+category: object/component
+---
+
+```html
+<div class="_c-container">
+  ...
+</div>
+```
+*/
 ._c-container {
   margin-right: auto;
   margin-left: auto; }
@@ -768,6 +955,55 @@ label {
     ._c-container {
       max-width: 75rem; } }
 
+/*
+---
+name: Copyright
+category:
+  - object/component
+  - object/component/copyright
+---
+
+```html
+<div class="_c-copyright">
+  ...
+</div>
+```
+*/
+/*
+---
+name: Drawer
+category:
+  - object/component
+  - object/component/drawer
+---
+
+```html
+<div class="_c-drawer" data-c="drawer" style="min-height: 200px">
+  <nav id="drawer" class="_c-drawer__body" data-c="drawer__body" role="navigation" aria-hidden="true">
+    <ul class="_c-drawer__menu">
+      <li class="_c-drawer__item"><a href="#">menu</a></li>
+      <li class="_c-drawer__item"><a href="#">menu</a></li>
+      <li class="_c-drawer__item">
+        <a href="#">menu</a>
+        <div class="_c-drawer__toggle" data-c="drawer__toggle" aria-expanded="false">
+          <span class="_ic-angle-right" aria-hidden="true"></span>
+        </div>
+        <ul class="_c-drawer__submenu" data-c="drawer__submenu" aria-hidden="true">
+          <li class="_c-drawer__subitem"><a href="#">submenu</a></li>
+          <li class="_c-drawer__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="_c-hamburger-btn" data-c="drawer-btn" aria-expanded="false" aria-controls="drawer">
+  <div class="_c-hamburger-btn__bar"></div>
+  <div class="_c-hamburger-btn__bar"></div>
+  <div class="_c-hamburger-btn__bar"></div>
+</div>
+```
+*/
 ._c-drawer {
   position: relative; }
   ._c-drawer__body {
@@ -830,11 +1066,65 @@ label {
   ._c-drawer__body--fixed {
     position: fixed; }
 
+/*
+---
+name: Entries
+category:
+  - object/component
+  - object/component/entries
+---
+
+```html
+<ul class="_c-entries">
+  <li class="_c-entries__item">
+    ...
+  </li>
+</ul>
+```
+*/
 ._c-entries {
   list-style: none;
   margin: 0;
   padding: 0; }
 
+/*
+---
+name: Entry
+category:
+  - object/component
+  - object/component/entry
+---
+
+```html
+<article class="_c-entry">
+  <header class="_c-entry__header">
+    <h1 class="_c-entry__title">...</h1>
+    <div class="_c-entry__content">
+      ...
+    </div>
+  </header>
+</article>
+```
+*/
+/*
+---
+name: Flexible media
+category:
+  - object/component
+  - object/component/flex-media
+---
+
+```html
+<div class="_c-flex-media">
+  <div class="_c-flex-media__figure">
+    <img src="/aigis_assets/images/dummy.jpg" style="width: 150px">
+  </div>
+  <div class="_c-flex-media__body">
+    ...
+  </div>
+</div>
+```
+*/
 @media (min-width: 40em) {
   ._c-flex-media {
     display: -ms-flexbox;
@@ -872,20 +1162,63 @@ label {
     -ms-flex-order: 1;
     order: 1; } }
 
+/*
+---
+name: Form Control
+category:
+  - object/component
+  - object/component/form-control
+---
+
+```html
+<input type="text" class="_c-form-control">
+```
+```html
+<textarea class="_c-form-control"></textarea>
+```
+```html
+<input type="text" class="_c-form-control" disabled>
+```
+```html
+<input type="text" class="_c-form-control" readonly>
+```
+*/
 ._c-form-control {
   border: 1px solid #cccccc;
   border-radius: 3px;
+  outline: 0;
+  transition: border 0.1s ease-out;
   padding: 0.4375rem 0.875rem;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.035); }
+  ._c-form-control:hover {
+    border-color: #999; }
+  ._c-form-control:active, ._c-form-control:focus, ._c-form-control[aria-selected="true"] {
+    border-color: #85B7D9; }
+  textarea._c-form-control {
+    height: auto;
+    width: 100%; }
   ._c-form-control[disabled] {
     background-color: #eeeeee;
     cursor: not-allowed; }
   ._c-form-control[readonly] {
     background-color: #eeeeee; }
-  textarea._c-form-control {
-    height: auto;
-    width: 100%; }
 
+/*
+---
+name: Hamberger Button
+category:
+  - object/component
+  - object/component/hamberger-btn
+---
+
+```html
+<div class="_c-hamburger-btn" role="button" aria-expanded="false">
+  <div class="_c-hamburger-btn__bar"></div>
+  <div class="_c-hamburger-btn__bar"></div>
+  <div class="_c-hamburger-btn__bar"></div>
+</div>
+```
+*/
 ._c-hamburger-btn {
   position: relative;
   display: inline-block;
@@ -916,6 +1249,28 @@ label {
   ._c-hamburger-btn[aria-expanded="true"] > ._c-hamburger-btn__bar:nth-child(3) {
     transform: rotate(-45deg); }
 
+/*
+---
+name: Hero
+category:
+  - object/component
+  - object/component/hero
+---
+
+```html
+<div class="_c-hero" style="background-image: url(/aigis_assets/images/dummy.jpg)">
+  <div class="_c-hero__header">
+    ...
+  </div>
+  <div class="_c-hero__content">
+    ...
+  </div>
+  <div class="_c-hero__footer">
+    ...
+  </div>
+</div>
+```
+*/
 ._c-hero {
   display: -ms-flexbox;
   display: flex;
@@ -966,24 +1321,111 @@ label {
     ._c-hero--fixed {
       background-attachment: fixed; } }
 
+[class^="_ic-"],
+[class*=" _ic-"] {
+  font-family: 'basis';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/*
+---
+name: Icon (Angle Right)
+category:
+  - object/component
+  - object/component/icon-font
+---
+
+```html
+<span class="_ic-angle-right" aria-hidden="true"></span>
+```
+*/
+._ic-angle-right::before {
+  content: "\e900"; }
+
+/*
+---
+name: Icon (Check)
+category:
+  - object/component
+  - object/component/icon-font
+---
+
+```html
+<span class="_ic-check" aria-hidden="true"></span>
+```
+*/
+._ic-check::before {
+  content: "\e901"; }
+
+/*
+---
+name: Icon (Angle Down)
+category:
+  - object/component
+  - object/component/icon-font
+---
+
+```html
+<span class="_ic-angle-down" aria-hidden="true"></span>
+```
+*/
+._ic-angle-down::before {
+  content: "\e902"; }
+
+/*
+---
+name: Input Group
+category:
+  - object/component
+  - object/component/input-group
+---
+
+```html
+<div class="_c-input-group">
+  <div class="_c-input-group__addon">@</div>
+  <div class="_c-input-group__field">
+    <input type="text">
+  </div>
+  <button class="_c-input-group__btn">Go</button>
+</div>
+```
+*/
 ._c-input-group {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   border-radius: 3px; }
-  ._c-input-group > :nth-child(n + 2) {
-    border-left: none; }
+  ._c-input-group > :first-child {
+    position: relative;
+    border-radius: 3px 0 0 3px;
+    border-right: none; }
+  ._c-input-group > :nth-last-child(2) {
+    position: relative;
+    z-index: 1; }
+  ._c-input-group > :last-child {
+    position: relative;
+    z-index: 0;
+    left: -1px;
+    border-radius: 0 3px 3px 0; }
+    ._c-input-group > :last-child:hover, ._c-input-group > :last-child:active, ._c-input-group > :last-child:focus {
+      z-index: 1; }
   ._c-input-group__addon {
+    border: 1px solid #cccccc;
+    padding: 0.4375rem 0.875rem;
     -ms-flex: none;
-    flex: none;
-    border: 1px solid #cccccc; }
+    flex: none; }
   ._c-input-group__field {
     display: -ms-flexbox;
     display: flex;
     -ms-flex: 1;
-    flex: 1;
-    border: 1px solid #cccccc; }
+    flex: 1; }
     ._c-input-group__field > input[type='email'],
     ._c-input-group__field > input[type='number'],
     ._c-input-group__field > input[type='password'],
@@ -991,71 +1433,91 @@ label {
     ._c-input-group__field > input[type='tel'],
     ._c-input-group__field > input[type='text'],
     ._c-input-group__field > input[type='url'] {
-      border: 0 solid transparent;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      outline: 0;
+      transition: border 0.1s ease-out;
+      padding: 0.4375rem 0.875rem;
+      border-radius: 0;
       -ms-flex: 1;
       flex: 1;
-      width: 100%;
-      border: none; }
-      ._c-input-group__field > input[type='email'][disabled],
-      ._c-input-group__field > input[type='number'][disabled],
-      ._c-input-group__field > input[type='password'][disabled],
-      ._c-input-group__field > input[type='search'][disabled],
-      ._c-input-group__field > input[type='tel'][disabled],
-      ._c-input-group__field > input[type='text'][disabled],
-      ._c-input-group__field > input[type='url'][disabled] {
-        background-color: #eeeeee;
-        cursor: not-allowed; }
-      ._c-input-group__field > input[type='email'][readonly],
-      ._c-input-group__field > input[type='number'][readonly],
-      ._c-input-group__field > input[type='password'][readonly],
-      ._c-input-group__field > input[type='search'][readonly],
-      ._c-input-group__field > input[type='tel'][readonly],
-      ._c-input-group__field > input[type='text'][readonly],
-      ._c-input-group__field > input[type='url'][readonly] {
-        background-color: #eeeeee; }
+      width: 100%; }
+      ._c-input-group__field > input[type='email']:hover,
+      ._c-input-group__field > input[type='number']:hover,
+      ._c-input-group__field > input[type='password']:hover,
+      ._c-input-group__field > input[type='search']:hover,
+      ._c-input-group__field > input[type='tel']:hover,
+      ._c-input-group__field > input[type='text']:hover,
+      ._c-input-group__field > input[type='url']:hover {
+        border-color: #999; }
+      ._c-input-group__field > input[type='email']:active, ._c-input-group__field > input[type='email']:focus, ._c-input-group__field > input[type='email'][aria-selected="true"],
+      ._c-input-group__field > input[type='number']:active,
+      ._c-input-group__field > input[type='number']:focus,
+      ._c-input-group__field > input[type='number'][aria-selected="true"],
+      ._c-input-group__field > input[type='password']:active,
+      ._c-input-group__field > input[type='password']:focus,
+      ._c-input-group__field > input[type='password'][aria-selected="true"],
+      ._c-input-group__field > input[type='search']:active,
+      ._c-input-group__field > input[type='search']:focus,
+      ._c-input-group__field > input[type='search'][aria-selected="true"],
+      ._c-input-group__field > input[type='tel']:active,
+      ._c-input-group__field > input[type='tel']:focus,
+      ._c-input-group__field > input[type='tel'][aria-selected="true"],
+      ._c-input-group__field > input[type='text']:active,
+      ._c-input-group__field > input[type='text']:focus,
+      ._c-input-group__field > input[type='text'][aria-selected="true"],
+      ._c-input-group__field > input[type='url']:active,
+      ._c-input-group__field > input[type='url']:focus,
+      ._c-input-group__field > input[type='url'][aria-selected="true"] {
+        border-color: #85B7D9; }
       textarea._c-input-group__field > input[type='email'], ._c-input-group__field > input[type='number'], ._c-input-group__field > input[type='password'], ._c-input-group__field > input[type='search'], ._c-input-group__field > input[type='tel'], ._c-input-group__field > input[type='text'], ._c-input-group__field > input[type='url'] {
         height: auto;
         width: 100%; }
   ._c-input-group__btn {
     display: inline-block;
     cursor: pointer;
+    line-height: 1;
     overflow: hidden;
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
     white-space: nowrap;
+    background-color: #fff;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    outline: 0;
+    transition: border 0.1s ease-out;
+    padding: 0.4375rem 0.875rem;
+    color: #333;
     -ms-flex: none;
     flex: none;
-    overflow: visible;
-    border: 1px solid #cccccc; }
-  ._c-input-group > :first-child {
-    border-radius: 3px 0 0 3px; }
-  ._c-input-group > :last-child {
-    border-radius: 0 3px 3px 0; }
+    overflow: visible; }
+    ._c-input-group__btn:hover {
+      border-color: #999; }
+    ._c-input-group__btn:active, ._c-input-group__btn:focus, ._c-input-group__btn[aria-selected="true"] {
+      border-color: #85B7D9; }
   ._c-input-group__addon {
-    background-color: #eeeeee;
-    padding: 0.5rem; }
-  ._c-input-group__field > input[type='email'],
-  ._c-input-group__field > input[type='number'],
-  ._c-input-group__field > input[type='password'],
-  ._c-input-group__field > input[type='search'],
-  ._c-input-group__field > input[type='tel'],
-  ._c-input-group__field > input[type='text'],
-  ._c-input-group__field > input[type='url'] {
-    padding: 0.4375rem 0.875rem; }
-  ._c-input-group__btn {
-    display: inline-block;
-    cursor: pointer;
-    overflow: hidden;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    border: 1px solid #cccccc;
-    background-color: #fff;
-    color: #333;
-    padding: 0.5rem 2rem; }
+    background-color: #eeeeee; }
 
+/*
+---
+name: Media
+category:
+  - object/component
+  - object/component/media
+---
+
+```html
+<div class="_c-media">
+  <div class="_c-media__figure">
+    <img src="/aigis_assets/images/dummy.jpg" style="width: 150px">
+  </div>
+  <div class="_c-media__body">
+    ...
+  </div>
+</div>
+```
+*/
 ._c-media {
   display: -ms-flexbox;
   display: flex; }
@@ -1083,6 +1545,22 @@ label {
     -ms-flex-order: 1;
     order: 1; }
 
+/*
+---
+name: Meta
+category:
+  - object/component
+  - object/component/meta
+---
+
+```html
+<ul class="_c-meta">
+  <li class="_c-meta__item">
+    ...
+  </li>
+</ul>
+```
+*/
 ._c-meta {
   list-style: none;
   margin: 0;
@@ -1095,6 +1573,57 @@ label {
   ._c-meta__item {
     display: inline; }
 
+/*
+---
+name: navbar
+category:
+  - object/component
+  - object/component/navbar
+---
+
+```html
+<ul class="_c-navbar">
+  <li class="_c-navbar__item" data-c="navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="_c-navbar__submenu" data-c="navbar__submenu" aria-hidden="true">
+      <li class="_c-navbar__subitem" data-c="navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="_c-navbar__submenu" data-c="navbar__submenu" aria-hidden="true">
+          <li class="_c-navbar__subitem" data-c="navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="_c-navbar__item" data-c="navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+  </li>
+  <li class="_c-navbar__item" data-c="navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+```html
+<ul class="_c-navbar _c-navbar--auto">
+  <li class="_c-navbar__item" data-c="navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="_c-navbar__submenu" data-c="navbar__submenu" aria-hidden="true">
+      <li class="_c-navbar__subitem" data-c="navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="_c-navbar__submenu" data-c="navbar__submenu" aria-hidden="true">
+          <li class="_c-navbar__subitem" data-c="navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="_c-navbar__item" data-c="navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+  </li>
+  <li class="_c-navbar__item" data-c="navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+*/
 ._c-navbar {
   list-style: none;
   margin: 0;
@@ -1149,6 +1678,22 @@ label {
     -ms-flex: 0 1 auto;
     flex: 0 1 auto; }
 
+/*
+---
+name: Page Effect
+category:
+  - object/component
+  - object/component/page-effect
+---
+
+```html
+<div class="_c-page-effect" data-c="page-effect" data-page-effect="fadein" aria-hidden="false">
+  <div class="_c-page-effect__item">
+    Loading...
+  </div>
+</div>
+```
+*/
 ._c-page-effect {
   position: fixed;
   top: 0;
@@ -1185,57 +1730,312 @@ label {
     left: 50%;
     transform: translate(-50%, -50%); }
 
+/*
+---
+name: Page Header
+category:
+  - object/component
+  - object/component/page-header
+---
+
+```html
+<header class="_c-page-header">
+  <h1 class="_c-page-header__title">...</h1>
+</header>
+```
+*/
 ._c-page-header {
   padding: 3.5rem 0; }
   ._c-page-header__title {
     margin: 0; }
 
+/*
+---
+name: Radio
+category:
+  - object/component
+  - object/component/radio
+---
+
+```html
+<label>
+  <span class="_c-radio">
+    <input type="radio">
+    <span class="_c-radio__control"></span>
+  </span>
+  ...
+</label>
+```
+*/
 ._c-radio {
   position: relative;
   display: inline-block;
-  margin-right: 0.5rem;
-  padding-left: 1.5rem; }
-  ._c-radio > [type="radio"] {
+  height: 16px;
+  width: 16px; }
+  ._c-radio > [type="radio"], ._c-radio__control, ._c-radio__control::before {
     position: absolute;
-    top: 0.375rem;
+    top: 0;
     left: 0;
+    display: block;
+    height: 16px;
+    width: 16px;
+    border-radius: 100%; }
+  ._c-radio > [type="radio"] {
     z-index: 1;
-    height: 1rem;
-    width: 1rem;
     cursor: pointer;
     opacity: 0 !important;
     outline: 0; }
-    ._c-radio > [type="radio"]:checked ~ ._c-radio__label::after {
+    ._c-radio > [type="radio"]:checked ~ ._c-radio__control::after {
       opacity: 1; }
-  ._c-radio__label::before {
-    position: absolute;
-    top: 0.375rem;
-    left: 0;
-    z-index: 0;
-    border-radius: 100%;
-    height: 1rem;
-    width: 1rem;
-    overflow: hidden;
-    content: '';
-    display: inline-block;
-    background-color: #fff;
-    border: 1px solid #cccccc; }
-  ._c-radio__label::after {
-    position: absolute;
-    top: 0.625rem;
-    left: 0.25rem;
-    z-index: 0;
-    border-radius: 100%;
-    height: 0.5rem;
-    width: 0.5rem;
-    overflow: hidden;
-    content: '';
-    display: inline-block;
-    background-color: #666666;
-    opacity: 0; }
-  ._c-radio--block {
-    display: block; }
+  ._c-radio__control {
+    z-index: 0; }
+    ._c-radio__control::before {
+      content: '';
+      background-color: #fff;
+      border: 1px solid #cccccc; }
+    ._c-radio__control::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: '';
+      display: block;
+      background-color: #333;
+      height: 8px;
+      width: 8px;
+      border-radius: 100%;
+      opacity: 0; }
 
+/*
+---
+name: Grid System
+category:
+  - object/component
+  - object/component/grid-system
+---
+
+```html
+<div class="_c-row">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--reverse">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--nowrap">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--left">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--right">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--center">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--between">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--around">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--top">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2<br>
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3<br>
+    3<br>
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--bottom">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2<br>
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3<br>
+    3<br>
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--middle">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2<br>
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3<br>
+    3<br>
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--baseline">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2<br>
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3<br>
+    3<br>
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--collapse">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--margin">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--margin-s">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--margin-l">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3
+  </div>
+</div>
+```
+```html
+<div class="_c-row _c-row--fill">
+  <div class="_c-row__col _c-row__col--1-3">
+    1
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    2<br>
+    2
+  </div>
+  <div class="_c-row__col _c-row__col--1-3">
+    3<br>
+    3<br>
+    3
+  </div>
+</div>
+```
+*/
 ._c-row {
   display: -ms-flexbox;
   display: flex;
@@ -2428,53 +3228,131 @@ label {
     -ms-flex: 0 1 auto;
     flex: 0 1 auto; } }
 
+/*
+---
+name: Section
+category:
+  - object/component
+  - object/component/section
+---
+
+```html
+<section class="_c-section">
+  <h2 class="_c-section__title">...</h2>
+  <div class="_c-section__content">
+    ...
+  </div>
+</section>
+```
+*/
 ._c-section {
   padding: 3.5rem 0; }
 
+/*
+---
+name: Select
+category:
+  - object/component
+  - object/component/select
+---
+
+```html
+<span class="_c-select" data-c="select" aria-selected="false">
+  <select>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+  <span class="_c-select__label" data-c="select__label"></span>
+</span>
+```
+*/
 ._c-select {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  border: 1px solid #cccccc;
   background-color: #fff;
-  border-radius: _border-radius; }
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  outline: 0;
+  transition: border 0.1s ease-out; }
+  ._c-select:hover {
+    border-color: #999; }
+  ._c-select:active, ._c-select:focus, ._c-select[aria-selected="true"] {
+    border-color: #85B7D9; }
   ._c-select::before {
     position: absolute;
     top: 50%;
-    right: 6px;
+    right: 0.75rem;
+    z-index: 1;
     transform: translateY(-50%);
-    content: '';
-    display: block; }
+    font-family: 'basis';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\e902"; }
+  ._c-select > select, ._c-select__label {
+    padding: 0.4375rem 0.875rem;
+    padding-right: 2.625rem; }
   ._c-select > select {
     position: relative;
+    z-index: 1;
+    opacity: 0 !important;
     margin: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: transparent !important;
     border: none;
-    line-height: 1;
-    outline: 0;
-    width: calc(100% + 50px); }
-  ._c-select::before {
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 6px 4px 0 4px;
-    border-color: #666666 transparent transparent transparent;
-    width: 0;
-    height: 0; }
-  ._c-select > select {
-    padding: 0.4375rem 1.75rem 0.4375rem 0.875rem; }
+    outline: 0; }
+  ._c-select__label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0; }
   ._c-select--block {
     display: block; }
+    ._c-select--block > select {
+      width: 100%; }
 
+/*
+---
+name: Site Branding
+category:
+  - object/component
+  - object/component/site-branding
+---
+
+```html
+<div class="_c-site-branding">
+  <h1 class="_c-site-branding__title">...</h1>
+</div>
+```
+*/
 ._c-site-branding__title {
   margin: 0;
   font-size: 32px;
   font-size: 2rem;
   line-height: 1.28125; }
 
+/*
+---
+name: Spinner (Circle)
+category:
+  - object/component
+  - object/component/spinner-circle
+---
+
+```html
+<div class="_c-spinner-circle"></div>
+```
+*/
 ._c-spinner-circle {
   display: inline-block;
   border-radius: 100%;
@@ -2491,6 +3369,22 @@ label {
   100% {
     transform: rotate(360deg); } }
 
+/*
+---
+name: Spinner (Dots)
+category:
+  - object/component
+  - object/component/spinner-dots
+---
+
+```html
+<div class="_c-spinner-dots">
+  <div class="_c-spinner-dots__dot"></div>
+  <div class="_c-spinner-dots__dot"></div>
+  <div class="_c-spinner-dots__dot"></div>
+</div>
+```
+*/
 ._c-spinner-dots {
   display: inline-block;
   font-size: 0; }
@@ -2519,6 +3413,22 @@ label {
   ._c-spinner-dots__dot {
     margin: 0 4px; }
 
+/*
+---
+name: Spinner (Pulse)
+category:
+  - object/component
+  - object/component/spinner-pulse
+---
+
+```html
+<div class="_c-spinner-pulse">
+  <div class="_c-spinner-pulse__bar"></div>
+  <div class="_c-spinner-pulse__bar"></div>
+  <div class="_c-spinner-pulse__bar"></div>
+</div>
+```
+*/
 ._c-spinner-pulse {
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -2547,17 +3457,84 @@ label {
   ._c-spinner-pulse__bar {
     margin: 0 3px; }
 
+/*
+---
+name: ._u-animate
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<style>
+._u-animate:hover {
+  width: 100% !important;
+  opacity: .5 !important;
+}
+</style>
+<div class="_u-animate" style="background-color: #333; width: 100px; height: 20px;"></div>
+```
+*/
 ._u-animate {
   transition: all 0.1s ease-out; }
-  ._u-animate-size {
-    transition: width 0.1s ease-out, height 0.1s ease-out; }
-  ._u-animate-opacity {
-    transition: opacity 0.1s ease-out;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden; }
-  ._u-animate-shake-vertical:hover, ._u-animate-shake-vertical:focus {
-    position: relative;
-    animation: _bounce_vertical_4px 0.5s; }
+
+/*
+---
+name: ._u-animate-size
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<style>
+._u-animate-size:hover {
+  width: 100% !important;
+}
+</style>
+<div class="_u-animate-size" style="background-color: #333; width: 100px; height: 20px;"></div>
+```
+*/
+._u-animate-size {
+  transition: width 0.1s ease-out, height 0.1s ease-out; }
+
+/*
+---
+name: ._u-animate-opacity
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<style>
+._u-animate-opacity:hover {
+  opacity: .5 !important;
+}
+</style>
+<div class="_u-animate-opacity" style="background-color: #333; width: 100px; height: 20px;"></div>
+```
+*/
+._u-animate-opacity {
+  transition: opacity 0.1s ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+/*
+---
+name: ._u-animate-shake-vertical
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<div class="_u-animate-shake-vertical" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+._u-animate-shake-vertical:hover, ._u-animate-shake-vertical:focus {
+  position: relative;
+  animation: _bounce_vertical_4px 0.5s; }
 
 @keyframes _bounce_vertical_4px {
   0% {
@@ -2570,9 +3547,22 @@ label {
     top: 2px; }
   100% {
     top: 0; } }
-  ._u-animate-vibrate-vertical:hover, ._u-animate-vibrate-vertical:focus {
-    position: relative;
-    animation: _bounce_vertical_2px 0.2s; }
+
+/*
+---
+name: ._u-animate-vibrate-vertical
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<div class="_u-animate-vibrate-vertical" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+._u-animate-vibrate-vertical:hover, ._u-animate-vibrate-vertical:focus {
+  position: relative;
+  animation: _bounce_vertical_2px 0.2s; }
 
 @keyframes _bounce_vertical_2px {
   0% {
@@ -2585,9 +3575,22 @@ label {
     top: 1px; }
   100% {
     top: 0; } }
-  ._u-animate-shake-horizontal:hover, ._u-animate-shake-horizontal:focus {
-    position: relative;
-    animation: _bounce_horizontal_4px 0.5s; }
+
+/*
+---
+name: ._u-animate-shake-horizontal
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<div class="_u-animate-shake-horizontal" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+._u-animate-shake-horizontal:hover, ._u-animate-shake-horizontal:focus {
+  position: relative;
+  animation: _bounce_horizontal_4px 0.5s; }
 
 @keyframes _bounce_horizontal_4px {
   0% {
@@ -2600,9 +3603,22 @@ label {
     left: 2px; }
   100% {
     left: 0; } }
-  ._u-animate-vibrate-horizontal:hover, ._u-animate-vibrate-horizontal:focus {
-    position: relative;
-    animation: _bounce_horizontal_2px 0.2s; }
+
+/*
+---
+name: ._u-animate-vibrate-horizontal
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<div class="_u-animate-vibrate-horizontal" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+._u-animate-vibrate-horizontal:hover, ._u-animate-vibrate-horizontal:focus {
+  position: relative;
+  animation: _bounce_horizontal_2px 0.2s; }
 
 @keyframes _bounce_horizontal_2px {
   0% {
@@ -2615,8 +3631,21 @@ label {
     left: 1px; }
   100% {
     left: 0; } }
-  ._u-animate-shake-scale:hover, ._u-animate-shake-scale:focus {
-    animation: _bounce_scale_120 0.5s ease-out; }
+
+/*
+---
+name: ._u-animate-shake-scale
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<div class="_u-animate-shake-scale" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+._u-animate-shake-scale:hover, ._u-animate-shake-scale:focus {
+  animation: _bounce_scale_120 0.5s ease-out; }
 
 @keyframes _bounce_scale_120 {
   0% {
@@ -2629,8 +3658,21 @@ label {
     transform: scale(1.1); }
   100% {
     transform: scale(1); } }
-  ._u-animate-vibrate-scale:hover, ._u-animate-vibrate-scale:focus {
-    animation: _bounce_scale_110 0.2s ease-out; }
+
+/*
+---
+name: ._u-animate-vibrate-scale
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<div class="_u-animate-vibrate-scale" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+._u-animate-vibrate-scale:hover, ._u-animate-vibrate-scale:focus {
+  animation: _bounce_scale_110 0.2s ease-out; }
 
 @keyframes _bounce_scale_110 {
   0% {
@@ -2643,22 +3685,51 @@ label {
     transform: scale(1.05); }
   100% {
     transform: scale(1); } }
-  ._u-animate-extend-underline {
-    position: relative; }
-    ._u-animate-extend-underline::after {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      display: block;
-      content: '';
-      width: 0;
-      height: 1px;
-      transition: width 0.1s ease-out;
-      transform: translateX(-50%);
-      background-color: #333; }
-    ._u-animate-extend-underline:hover::after, ._u-animate-extend-underline:focus::after {
-      width: 100%; }
 
+/*
+---
+name: ._u-animate-extend-underline
+category:
+  - object/utility
+  - object/utility/animate
+---
+
+```html
+<span class="_u-animate-extend-underline">menu</span>
+```
+*/
+._u-animate-extend-underline {
+  position: relative; }
+  ._u-animate-extend-underline::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    content: '';
+    width: 0;
+    height: 1px;
+    transition: width 0.1s ease-out;
+    transform: translateX(-50%);
+    background-color: #333; }
+  ._u-animate-extend-underline:hover::after, ._u-animate-extend-underline:focus::after {
+    width: 100%; }
+
+/*
+---
+name: ._u-clearfix
+category:
+  - object/utility
+  - object/utility/clearfix
+---
+
+```html
+<div class="_u-clearfix">
+  <img class="_u-pull-left" src="/aigis_assets/images/dummy.jpg" style="width: 150px; margin-right: 1em">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+```
+*/
 ._u-clearfix:before, ._u-clearfix:after {
   content: " ";
   display: table; }
@@ -2666,84 +3737,374 @@ label {
 ._u-clearfix:after {
   clear: both; }
 
+/*
+---
+name: ._u-hidden-sm
+category:
+  - object/utility
+  - object/utility/hidden
+---
+
+```html
+<div class="_u-hidden-sm">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (max-width: 39.9375em) {
   ._u-hidden-sm {
     display: none !important; } }
 
+/*
+---
+name: ._u-hidden-md
+category:
+  - object/utility
+  - object/utility/hidden
+---
+
+```html
+<div class="_u-hidden-md">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 40em) and (max-width: 63.9375em) {
   ._u-hidden-md {
     display: none !important; } }
 
+/*
+---
+name: ._u-hidden-lg
+category:
+  - object/utility
+  - object/utility/hidden
+---
+
+```html
+<div class="_u-hidden-lg">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 64em) {
   ._u-hidden-lg {
     display: none !important; } }
 
+/*
+---
+name: _u-img-2x
+category:
+  - object/utility
+  - object/utility/img
+---
+
+```html
+<img class="_u-img-2x" src="/aigis_assets/images/dummy.jpg">
+```
+*/
 ._u-img-2x {
   zoom: 0.5 !important; }
 
+/*
+---
+name: ._u-pull-right
+category:
+  - object/utility
+  - object/utility/pull
+---
+
+```html
+<img class="_u-pull-right" src="/aigis_assets/images/dummy.jpg" style="width: 150px; margin-left: 1em">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+```
+*/
 ._u-pull-right {
   float: right !important; }
 
-._u-pull-left {
+/*
+---
+name: ._u-pull-left
+category:
+  - object/utility
+  - object/utility/pull
+---
+
+```html
+<img class="_u-pull-left" src="/aigis_assets/images/dummy.jpg" style="width: 150px; margin-right: 1em">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+```
+*/
+._u-pull--left {
   float: left !important; }
 
+/*
+---
+name: ._u-text-center
+category:
+  - object/utility
+  - object/utility/text
+---
+
+```html
+<div class="_u-text-center">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 ._u-text-center {
   text-align: center !important; }
 
-._u-text-right {
+/*
+---
+name: ._u-text-right
+category:
+  - object/utility
+  - object/utility/text
+---
+
+```html
+<div class="_u-text-right">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
+._u-right {
   text-align: right !important; }
 
-._u-text-left {
+/*
+---
+name: ._u-text-left
+category:
+  - object/utility
+  - object/utility/text
+---
+
+```html
+<div class="_u-text-left">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
+._u-left {
   text-align: left !important; }
 
+/*
+---
+name: ._u-visible-sm-inline
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-sm-inline">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (max-width: 39.9375em) {
   ._u-visible-sm-inline {
     display: inline !important; } }
 
+/*
+---
+name: ._u-visible-sm-inline-block
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-sm-inline-block">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (max-width: 39.9375em) {
-  ._u-visible-sm-inline-block {
+  ._u-sm-inline-block {
     display: inline-block !important; } }
 
+/*
+---
+name: ._u-visible-sm-block
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-sm-block">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (max-width: 39.9375em) {
-  ._u-visible-sm-block {
+  ._u-sm-block {
     display: block !important; } }
 
+/*
+---
+name: ._u-visible-sm-flex
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-sm-flex">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (max-width: 39.9375em) {
-  ._u-visible-sm-flex {
+  ._u-sm-flex {
     display: -ms-flexbox !important;
     display: flex !important; } }
 
+/*
+---
+name: ._u-visible-md-inline
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-md-inline">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 40em) and (max-width: 63.9375em) {
-  ._u-visible-md-inline {
+  ._u-md-inline {
     display: inline !important; } }
 
+/*
+---
+name: ._u-visible-md-inline-block
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-md-inline-block">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 40em) and (max-width: 63.9375em) {
-  ._u-visible-md-inline-block {
+  ._u-md-inline-block {
     display: inline-block !important; } }
 
+/*
+---
+name: ._u-visible-md-block
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-md-block">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 40em) and (max-width: 63.9375em) {
-  ._u-visible-md-block {
+  ._u-md-block {
     display: block !important; } }
 
+/*
+---
+name: ._u-visible-md-flex
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-md-flex">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 40em) and (max-width: 63.9375em) {
-  ._u-visible-md-flex {
+  ._u-md-flex {
     display: -ms-flexbox !important;
     display: flex !important; } }
 
+/*
+---
+name: ._u-visible-lg-inline
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-lg-inline">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 64em) {
-  ._u-visible-lg-inline {
+  ._u-lg-inline {
     display: inline !important; } }
 
+/*
+---
+name: ._u-visible-lg-inline-block
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-lg-inline-block">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 64em) {
-  ._u-visible-lg-inline-block {
+  ._u-lg-inline-block {
     display: inline-block !important; } }
 
+/*
+---
+name: ._u-visible-lg-block
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-lg-block">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 64em) {
-  ._u-visible-lg-block {
+  ._u-lg-block {
     display: block !important; } }
 
+/*
+---
+name: ._u-visible-lg-flex
+category:
+  - object/utility
+  - object/utility/visible
+---
+
+```html
+<div class="_u-visible-lg-flex">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+*/
 @media (min-width: 64em) {
-  ._u-visible-lg-flex {
+  ._u-lg-flex {
     display: -ms-flexbox !important;
     display: flex !important; } }
 
@@ -2795,6 +4156,9 @@ blockquote > h6 {
 blockquote > :first-child {
   margin-top: 0; }
 
+label + label {
+  margin-left: 0.875rem; }
+
 ._c-alert {
   border-color: #9ed0d0;
   color: #59afaf; }
@@ -2827,20 +4191,13 @@ blockquote > :first-child {
     color: #999; }
   ._c-breadcrumbs a {
     text-decoration: underline; }
-  ._c-breadcrumbs__item:nth-child(n + 2) {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased; }
-    ._c-breadcrumbs__item:nth-child(n + 2)::before {
-      content: "\f105"; }
 
 ._c-btn {
   transition: background-color 0.1s ease-out;
   border: 2px solid #9ed0d0;
   color: #9ed0d0;
-  font-weight: bold; }
+  font-weight: bold;
+  padding: 0.875rem 1.75rem; }
   ._c-btn:hover, ._c-btn:focus {
     background-color: #f3f8f8; }
   ._c-btn--ghost {
@@ -2872,6 +4229,9 @@ blockquote > :first-child {
     ._c-btn--danger:hover, ._c-btn--danger:focus {
       background-color: #fcf0f1; }
 
+._c-checkbox {
+  vertical-align: text-bottom; }
+
 ._c-copyright {
   margin: 3.5rem 0 0;
   font-size: 14px;
@@ -2881,6 +4241,11 @@ blockquote > :first-child {
   padding: 3.5rem 0; }
   ._c-copyright a {
     color: #999; }
+
+._c-drawer__toggle {
+  transition: transform 0.1s ease-out; }
+  ._c-drawer__toggle[aria-expanded="true"] {
+    transform: rotate(90deg); }
 
 ._c-entries {
   list-style: none;
@@ -2993,6 +4358,9 @@ blockquote > :first-child {
     font-size: 32px;
     font-size: 2rem;
     line-height: 1.28125; }
+
+._c-radio {
+  vertical-align: text-bottom; }
 
 ._c-section {
   padding: 5.25rem 0; }
