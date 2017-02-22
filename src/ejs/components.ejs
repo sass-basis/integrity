@@ -135,27 +135,39 @@
             <div class="_c-section__content">
               <div class="_c-row _c-row--margin">
                 <div class="_c-row__col _c-row__col--1-1 _c-row__col--md-1-3">
-                  <label class="_c-checkbox">
-                    <input type="checkbox">
-                    <span class="_c-checkbox__label">checkbox1</span>
+                  <label>
+                    <span class="_c-checkbox">
+                      <input type="checkbox">
+                      <span class="_c-checkbox__control"></span>
+                    </span>
+                    checkbox1
                   </label>
-                  <label class="_c-checkbox">
-                    <input type="checkbox">
-                    <span class="_c-checkbox__label">checkbox2</span>
-                  </label>
-                </div>
-                <div class="_c-row__col _c-row__col--1-1 _c-row__col--md-1-3">
-                  <label class="_c-radio">
-                    <input type="radio" name="radio-inline">
-                    <span class="_c-radio__label">radio1</span>
-                  </label>
-                  <label class="_c-radio">
-                    <input type="radio" name="radio-inline">
-                    <span class="_c-radio__label">radio2</span>
+                  <label>
+                    <span class="_c-checkbox">
+                      <input type="checkbox">
+                      <span class="_c-checkbox__control"></span>
+                    </span>
+                    checkbox2
                   </label>
                 </div>
                 <div class="_c-row__col _c-row__col--1-1 _c-row__col--md-1-3">
-                  <span class="_c-select">
+                  <label>
+                    <span class="_c-radio">
+                      <input type="radio" name="radio-inline">
+                      <span class="_c-radio__control"></span>
+                    </span>
+                    radio1
+                  </label>
+                    <label>
+                      <span class="_c-radio">
+                        <input type="radio" name="radio-inline">
+                        <span class="_c-radio__control"></span>
+                      </span>
+                      radio2
+                    </label>
+                </div>
+                <div class="_c-row__col _c-row__col--1-1 _c-row__col--md-1-3">
+                  <span class="_c-select" data-c="select" aria-selected="false">
                     <select>
                       <option>1</option>
                       <option>2</option>
@@ -163,6 +175,7 @@
                       <option>4</option>
                       <option>5</option>
                     </select>
+                    <span class="_c-select__label" data-c="select__label"></span>
                   </span>
                 </div>
               </div>
@@ -218,7 +231,7 @@
                     <li class="_c-drawer__item">
                       <a href="#">menu</a>
                       <div class="_c-drawer__toggle" data-c="drawer__toggle" aria-expanded="false">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="_ic-angle-right" aria-hidden="true"></span>
                       </div>
                       <ul class="_c-drawer__submenu" data-c="drawer__submenu" aria-hidden="true">
                         <li class="_c-drawer__subitem"><a href="#">submenu</a></li>

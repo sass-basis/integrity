@@ -26,3 +26,7 @@ a {
 blockquote {
   @include _margin-between-children(.5);
 }
+
+label + label {
+  @include _margin-left(.5);
+}

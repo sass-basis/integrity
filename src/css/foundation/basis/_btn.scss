@@ -3,6 +3,7 @@
   border: 2px solid $color-accent;
   color: $color-accent;
   font-weight: bold;
+  @include _padding(.5, 1);
 
   @include _hover() {
     background-color: $color-main;

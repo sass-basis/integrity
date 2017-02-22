@@ -5,6 +5,7 @@
  */
 var gulp         = require('gulp');
 var sass         = require('gulp-sass');
+var sassGlob     = require('gulp-sass-glob');
 var rename       = require('gulp-rename');
 var postcss      = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
@@ -78,6 +79,7 @@ gulp.task('css', function() {
       {base: dir.src.css}
     )
     .pipe(plumber())
+    .pipe(sassGlob())
     .pipe(sass({
       includePaths: require('node-normalize-scss').includePaths
     }))
@@ -96,7 +98,7 @@ gulp.task('css', function() {
 /**
  * Build images
  */
-gulp.task('copy-images',['remove-images'], function() {
+gulp.task('copy-images', ['remove-images'], function() {
   return gulp.src(dir.src.images + '/**/*')
     .pipe(gulp.dest(dir.dist.images));
 });
@@ -104,6 +106,14 @@ gulp.task('copy-images',['remove-images'], function() {
 gulp.task('remove-images', function(cb) {
   rimraf(dir.dist.images, cb);
 });
+
+/**
+ * Font
+ */
+ gulp.task('font', function() {
+   return gulp.src('./node_modules/sass-basis/src/font/**')
+     .pipe(gulp.dest('./public/assets/font'));
+ });
 
 /**
  * EJS to HTML
@@ -167,6 +177,6 @@ gulp.task('zip', ['build'], function(){
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('build', ['css', 'js', 'ejs', 'copy-images']);
+gulp.task('build', ['css', 'js', 'ejs', 'copy-images', 'font']);
 
 gulp.task('default', ['build', 'browsersync', 'watch']);
