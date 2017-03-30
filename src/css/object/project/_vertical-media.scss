@@ -4,10 +4,12 @@
   box-shadow: none;
 
   &__figure {
+    @extend .#{$_prefix}c-card__figure;
     @include _margin(0, 0, .5);
   }
 
   &__body {
+    @extend .#{$_prefix}c-card__body;
     margin: 0;
     padding: 0;
 

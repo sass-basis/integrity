@@ -19,7 +19,6 @@ var nodeResolve  = require('rollup-plugin-node-resolve');
 var commonjs     = require('rollup-plugin-commonjs');
 var babel        = require('rollup-plugin-babel');
 var ejs          = require('gulp-ejs');
-var plumber      = require('gulp-plumber');
 
 var dir = {
   src: {
@@ -41,7 +40,6 @@ var dir = {
  */
 gulp.task('js', function() {
   gulp.src(dir.src.js + '/**/*.js')
-    .pipe(plumber())
     .pipe(rollup({
       allowRealFiles: true,
       entry: dir.src.js + '/app.js',
@@ -78,7 +76,6 @@ gulp.task('css', function() {
       ],
       {base: dir.src.css}
     )
-    .pipe(plumber())
     .pipe(sassGlob())
     .pipe(sass({
       includePaths: require('node-normalize-scss').includePaths
@@ -112,7 +109,7 @@ gulp.task('remove-images', function(cb) {
  */
  gulp.task('font', function() {
    return gulp.src('./node_modules/sass-basis/src/font/**')
-     .pipe(gulp.dest('./public/assets/font'));
+     .pipe(gulp.dest('./public/assets/font/basis'));
  });
 
 /**
@@ -123,7 +120,6 @@ gulp.task('ejs', function() {
     dir.src.ejs + '/**/*.ejs',
     '!' + dir.src.ejs + '/**/_*.ejs'
   ])
-  .pipe(plumber())
   .pipe(ejs(
     {},
     {},
@@ -137,7 +133,7 @@ gulp.task('ejs', function() {
  */
 gulp.task('watch', function() {
   gulp.watch([dir.src.css + '/**/*.scss'], ['css']);
-  gulp.watch([dir.src.js + '/**.js'], ['js']);
+  gulp.watch([dir.src.js + '/**/*.js'], ['js']);
   gulp.watch([dir.src.ejs + '/**/*.ejs'], ['ejs']);
 });
 
@@ -151,8 +147,7 @@ gulp.task('browsersync', function() {
       baseDir: dir.dist.ejs
     },
     files: [
-      dir.dist.ejs + '/**.html',
-      dir.dist.ejs + '/assets/**'
+      dir.dist.ejs + '/**'
     ]
   });
 });

@@ -6,11 +6,27 @@ The integrity is a responsive HTML5 + CSS3 template using the Basis.
 * Documents : https://sass-basis.github.io/
 
 ## Get started
-Just this links in head.
+### For src user
+#### Download
 ```
-<link rel="stylesheet" href="/PATH/TO/assets/css/style.min.css">
-<script src="/PATH/TO/assets/js/app.min.js"></script>
+$ git clone https://github.com/sass-basis/integrity
+$ cd integrity
+$ yarn install
 ```
+
+#### Build, watch files and start up local server
+```
+$ yarn start
+```
+
+#### Built only
+```
+$ yarn build
+```
+
+### For builded files user
+`public` directory is containing builded files. You can customize this directly.
+However, note that if you build src, this file will be overwritten.
 
 ## Browser support
 Modern Browser and IE10+
