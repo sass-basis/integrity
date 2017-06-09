@@ -235,10 +235,10 @@ var BasisSelect = function BasisSelect() {
     var selectWrapper = $(e);
     var select = selectWrapper.find('select');
     var label = selectWrapper.find('[data-c="select__label"]');
-    label.text(select.children('option:selected').val());
+    label.text(select.children('option:selected').text());
 
     select.on('change', function (event) {
-      label.text(select.val());
+      label.text($(select[0].selectedOptions).text());
     });
 
     select.on('focusin', function (event) {
