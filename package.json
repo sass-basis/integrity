@@ -1,6 +1,6 @@
 {
   "name": "sass-basis-integrity",
-  "version": "6.5.0",
+  "version": "6.5.1",
   "author": "inc2734",
   "contributors": [
     "designhehe"
@@ -19,7 +19,7 @@
     "gulp-ejs": "^3.0.1",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rollup": "^2.11.0",
+    "gulp-rollup": "^2.12.0",
     "gulp-sass": "^3.1.0",
     "gulp-sass-glob": "^1.0.8",
     "gulp-uglify": "^3.0.0",
@@ -31,8 +31,7 @@
   },
   "dependencies": {
     "sass-basis": "^6.5.0",
-    "sass-basis-layout": "^7.0.2",
-    "sass-basis-margin-between-children": "^3.0.0"
+    "sass-basis-layout": "^7.0.2"
   },
   "scripts": {
     "gulp": "gulp",

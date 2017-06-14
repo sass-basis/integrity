@@ -13,6 +13,6 @@
   }
 
   &__content {
-    @include _margin-between-children(1);
+    @include _content(1);
   }
 }

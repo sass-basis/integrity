@@ -95,7 +95,7 @@ gulp.task('css', function() {
 /**
  * Build images
  */
-gulp.task('copy-images', ['remove-images'], function() {
+gulp.task('images', ['remove-images'], function() {
   return gulp.src(dir.src.images + '/**/*')
     .pipe(gulp.dest(dir.dist.images));
 });
@@ -172,6 +172,6 @@ gulp.task('zip', ['build'], function(){
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('build', ['css', 'js', 'ejs', 'copy-images', 'font']);
+gulp.task('build', ['css', 'js', 'ejs', 'images', 'font']);
 
 gulp.task('default', ['build', 'browsersync', 'watch']);
